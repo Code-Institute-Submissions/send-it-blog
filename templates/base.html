@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +10,42 @@
     {% block styles %}
     {% endblock%}
 </head>
+
 <body>
+    <header>
+        <nav class="uk-navbar-container uk-margin" uk-navbar>
+            <div class="uk-navbar-center">
+
+                <div class="uk-navbar-center-left">
+                    <div>
+                        <ul class="uk-navbar-nav">
+                            <a class="uk-navbar-toggle search-bar" uk-search-icon href="#"></a>
+                            <div class="uk-drop" uk-drop="animation: uk-animation-slide-top-small; duration: 1000; mode: click; pos: right-center; offset: 0">
+                                <form class="uk-search uk-search-navbar uk-width-1-2 search-bar">
+                                    <input class="uk-search-input search-input" type="search" placeholder="Search..." autofocus>
+                                </form>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+                <a class="uk-navbar-item uk-logo logo" href="#">SEND IT <span
+                        class="uk-position-bottom-center tagline">Music
+                        And Culture</span></a>
+                <div class="uk-navbar-center-right">
+                    <div>
+                        <ul class="uk-navbar-nav uk-padding-remove-horizontal main__links">
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Login</a></li>
+                            <li><a href="#">Sign-in</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
     {% block content %}
     {% endblock %}
 
@@ -19,4 +55,5 @@
     {% block scripts %}
     {% endblock%}
 </body>
+
 </html>
