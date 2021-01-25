@@ -4,10 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Send It Blog</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.6.13/dist/css/uikit.min.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    {% block styles %}
+    {% endblock%}
 </head>
 <body>
-    <h1>Im part of the base template</h1>
     {% block content %}
     {% endblock %}
+
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.13/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.13/dist/js/uikit-icons.min.js"></script>
+    <script src="{{ url_for('static', filename='js/scripts.css') }}"></script>
+    {% block scripts %}
+    {% endblock%}
 </body>
 </html>
