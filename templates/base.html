@@ -26,7 +26,7 @@
                 </form>
             </div>
         </div>
-        <a class="uk-navbar-item uk-navbar-center uk-logo logo" href="{{ url_for('get_posts')}}">SEND IT...</a>  
+        <a class="uk-navbar-item uk-navbar-center uk-logo logo" href="{{ url_for('get_posts') }}">SEND IT...</a>  
         <a href="#offcanvas-slide" class="uk-position-center-right uk-margin-medium-right" uk-toggle uk-icon="icon: menu; ratio: 2;"></a>
 
         <div id="offcanvas-slide" uk-offcanvas="flip: true; mode: reveal;">
@@ -38,7 +38,7 @@
               <hr class="uk-divider-small uk-margin-small">
               <li><a href="#" class="nav__item">LOG IN</a></li>
               <hr class="uk-divider-small uk-margin-small">
-              <li><a href="#" class="nav__item">SIGN IN</a></li>
+              <li><a href="{{ url_for('register') }}" class="nav__item">SIGN UP</a></li>
               <hr class="uk-divider-icon uk-margin-small">
 
               <div class="social__links uk-margin-large-top">

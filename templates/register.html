@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="uk-card uk-card-default uk-card-body uk-width-1-2@m uk-align-center uk-border-rounded">
+    <!-- form header -->
+    <h3 class="uk-card-title center-align signup__title">JOIN US!</h3>
+    <p class="signup__text center-align">We would love to have you as part of our team</p>
+
+    <!-- form content -->
+    <form class="center-align" method="POST" action="{{ url_for('register') }}">
+
+    <!-- first name -->
+        <div class="uk-margin">
+            <div class="uk-inline">
+                <span class="uk-form-icon" uk-icon="icon: user"></span>
+                <input class="uk-input uk-border-rounded" type="text" id="firstname" name="firstname" placeholder="First Name" required>
+                <label for="firstname"></label>
+            </div>
+        </div>
+    <!-- last name -->
+        <div class="uk-margin">
+            <div class="uk-inline">
+                <span class="uk-form-icon" uk-icon="icon: user"></span>
+                <input class="uk-input uk-border-rounded" type="text" id="lastname" name="lastname" placeholder="Last Name" required>
+                <label for="lastname"></label>
+            </div>
+        </div>
+    <!-- email -->
+        <div class="uk-margin">
+            <div class="uk-inline">
+                <span class="uk-form-icon" uk-icon="icon: mail"></span>
+                <input class="uk-input uk-border-rounded" type="text" id="email" name="email" placeholder="Email" required>
+                <label for="email"></label>
+            </div>
+        </div>
+    <!-- password -->
+        <div class="uk-margin">
+            <div class="uk-inline">
+                <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                <input class="uk-input uk-border-rounded" type="password" id="password" name="password" placeholder="Enter A Password" required>
+                <label for="password"></label>
+            </div>
+        </div>
+    <!-- sign up button -->
+        <button class="uk-button uk-border-rounded signup__btn">SIGN UP</button>
+
+    </form>
+
+</div>
+
+{% endblock %}

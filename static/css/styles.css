@@ -1,9 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Arima+Madurai:wght@100;200;300;400;500;700;800;900&display=swap');
 
+/* Utility classes */
+
+.center-align {
+    text-align: center;
+}
+
 body {
     color: #000;
     font-family: 'Arima Madurai', Courier, monospace;
 }
+
+/* base template */
 
 .logo {
     font-family: 'Arima Madurai', Courier, monospace;
@@ -33,4 +41,19 @@ body {
 .social__icon {
     padding-left: 3px;
     padding-right: 3px;
+}
+
+/* register template */
+
+.signup__title {
+    font-family: 'Arima Madurai', Courier, monospace;
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.signup__btn {
+    background-color: #27fb6b;
+    color: #000;
+    font-weight: 900;
+    font-size: 1.2rem;
 }
