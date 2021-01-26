@@ -26,19 +26,27 @@
                 </form>
             </div>
         </div>
-        <a class="uk-navbar-item uk-navbar-center uk-logo" href="#">Logo</a>  
+        <a class="uk-navbar-item uk-navbar-center uk-logo logo" href="{{ url_for('get_posts')}}">SEND IT...</a>  
         <a href="#offcanvas-slide" class="uk-position-center-right uk-margin-medium-right" uk-toggle uk-icon="icon: menu; ratio: 2;"></a>
 
         <div id="offcanvas-slide" uk-offcanvas="flip: true; mode: reveal;">
           <div class="uk-offcanvas-bar">
-            <ul class="uk-nav uk-nav-default">
-              <li class="uk-active"><a href="#">Active</a></li>
-              <li><a href="#">ABOUT</a></li>
-              <li class="uk-nav-header">Header</li>
-              <li><a href="#">Item</a></li>
-              <li><a href="#">Item</a></li>
-              <li class="uk-nav-divider"></li>
-              <li><a href="#">Item</a></li>
+            <ul class="uk-nav" id="nav__items">
+              <li><a href="#" class="nav__item">ABOUT</a></li>
+              <hr class="uk-divider-small uk-margin-small">
+              <li><a href="#" class="nav__item">CONTACT</a></li>
+              <hr class="uk-divider-small uk-margin-small">
+              <li><a href="#" class="nav__item">LOG IN</a></li>
+              <hr class="uk-divider-small uk-margin-small">
+              <li><a href="#" class="nav__item">SIGN IN</a></li>
+              <hr class="uk-divider-icon uk-margin-small">
+
+              <div class="social__links uk-margin-large-top">
+                <a href="" class="social__icon" uk-icon="icon: github; ratio: 1.5;"></a>
+                <a href="" class="social__icon" uk-icon="icon: linkedin; ratio: 1.5;"></a>
+                <a href="" class="social__icon" uk-icon="icon: instagram; ratio: 1.5;"></a>
+              </div>
+              <p class="tagline">A Tastemakers Take On Music & Culture</p>
             </ul>
           </div>
         </div>

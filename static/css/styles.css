@@ -2,6 +2,7 @@
 
 body {
     color: #000;
+    font-family: 'Arima Madurai', Courier, monospace;
 }
 
 .logo {
@@ -10,22 +11,26 @@ body {
     font-weight: 900;
 }
 
+#nav__items {
+    color: #fff;
+}
+
+.nav__item {
+    font-size: 1.7rem;
+    font-weight: 700;
+}
+
 .tagline {
     font-family: 'Arima Madurai', Courier, monospace;
-    font-size: 1rem;
-    font-weight: 400;
-    display: block;
+    font-size: .8rem;
+    font-weight: 200;
 }
 
-.search-bar {
-    /* margin-right: 13rem; */
+.social__links {
+    text-align: center;
 }
 
-.main__links {
-    /* margin-left: 5rem; */
-}
-
-.main__links > li > a {
-    /* padding-left: 4px;
-    padding-right: 4px; */
+.social__icon {
+    padding-left: 3px;
+    padding-right: 3px;
 }
