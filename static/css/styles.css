@@ -18,14 +18,14 @@ body {
 }
 
 .search-bar {
-    margin-right: 13rem;
+    /* margin-right: 13rem; */
 }
 
 .main__links {
-    margin-left: 2rem;
+    /* margin-left: 5rem; */
 }
 
 .main__links > li > a {
-    padding-left: 4px;
-    padding-right: 4px;
+    /* padding-left: 4px;
+    padding-right: 4px; */
 }

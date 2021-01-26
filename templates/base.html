@@ -1,59 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Send It Blog</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.6.13/dist/css/uikit.min.css" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    {% block styles %}
-    {% endblock%}
-</head>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/uikit@3.6.13/dist/css/uikit.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+    {% block styles %} {% endblock%}
+  </head>
 
-<body>
+  <body>
     <header>
-        <nav class="uk-navbar-container uk-margin" uk-navbar>
-            <div class="uk-navbar-center">
-
-                <div class="uk-navbar-center-left">
-                    <div>
-                        <ul class="uk-navbar-nav">
-                            <a class="uk-navbar-toggle search-bar" uk-search-icon href="#"></a>
-                            <div class="uk-drop" uk-drop="animation: uk-animation-slide-top-small; duration: 1000; mode: click; pos: right-center; offset: 0">
-                                <form class="uk-search uk-search-navbar uk-width-1-2 search-bar">
-                                    <input class="uk-search-input search-input" type="search" placeholder="Search..." autofocus>
-                                </form>
-                            </div>
-                        </ul>
-                    </div>
-                </div>
-                <a class="uk-navbar-item uk-logo logo" href="#">SEND IT <span
-                        class="uk-position-bottom-center tagline">Music
-                        And Culture</span></a>
-                <div class="uk-navbar-center-right">
-                    <div>
-                        <ul class="uk-navbar-nav uk-padding-remove-horizontal main__links">
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">Login</a></li>
-                            <li><a href="#">Sign-in</a></li>
-                        </ul>
-                    </div>
-                </div>
-
+      <nav class="uk-navbar-container uk-margin-large-bottom" uk-navbar>
+        <div>
+            <a class="uk-navbar-toggle uk-margin-small-left" uk-search-icon href="#"></a>
+            <div class="uk-drop" uk-drop="mode: click; pos: right-center; offset: 0">
+                <form class="uk-search uk-search-navbar uk-width-1-2">
+                    <input class="uk-search-input" type="search" placeholder="Search..." autofocus>
+                </form>
             </div>
-        </nav>
+        </div>
+        <a class="uk-navbar-item uk-navbar-center uk-logo" href="#">Logo</a>  
+        <a href="#offcanvas-slide" class="uk-position-center-right uk-margin-medium-right" uk-toggle uk-icon="icon: menu; ratio: 2;"></a>
+
+        <div id="offcanvas-slide" uk-offcanvas="flip: true; mode: reveal;">
+          <div class="uk-offcanvas-bar">
+            <ul class="uk-nav uk-nav-default">
+              <li class="uk-active"><a href="#">Active</a></li>
+              <li><a href="#">ABOUT</a></li>
+              <li class="uk-nav-header">Header</li>
+              <li><a href="#">Item</a></li>
+              <li><a href="#">Item</a></li>
+              <li class="uk-nav-divider"></li>
+              <li><a href="#">Item</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
     </header>
 
-    {% block content %}
-    {% endblock %}
-
+    <div uk-grid>
+      {% block content %} {% endblock %}
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.13/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.13/dist/js/uikit-icons.min.js"></script>
     <script src="{{ url_for('static', filename='js/scripts.css') }}"></script>
-    {% block scripts %}
-    {% endblock%}
-</body>
-
+    {% block scripts %} {% endblock%}
+  </body>
 </html>
