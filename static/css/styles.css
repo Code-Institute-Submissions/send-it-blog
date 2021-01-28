@@ -62,3 +62,19 @@ body {
     line-height: 2;
     font-family: 'Arima Madurai', Courier, monospace;
 }
+
+.redirect-signup {
+    bottom: 26%;
+}
+
+.redirect-login {
+    top: 90%;
+}
+
+.signup-text {
+    margin-right: 60px;
+}
+
+.login-text {
+    margin-right: 60px;
+}

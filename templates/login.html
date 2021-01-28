@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="uk-card uk-card-default uk-card-body uk-width-1-2@m uk-align-center uk-border-rounded">
+    <!-- form header -->
+    <h3 class="uk-card-title center-align signup__title">WELCOME BACK!</h3>
+
+    <!-- form content -->
+    <form class="center-align" method="POST" action="{{ url_for('login') }}">
+
+    <!-- email -->
+        <div class="uk-margin">
+            <div class="uk-inline">
+                <span class="uk-form-icon" uk-icon="icon: mail"></span>
+                <input class="uk-input uk-border-rounded" type="email" id="email" name="email" placeholder="Email" required>
+                <label for="email"></label>
+            </div>
+        </div>
+    <!-- password -->
+        <div class="uk-margin">
+            <div class="uk-inline">
+                <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                <input class="uk-input uk-border-rounded" minlength="5" maxlength="15" type="password" id="password" name="password" placeholder="Enter A Password" required>
+                <label for="password"></label>
+            </div>
+        </div>
+    <!-- log in button -->
+        <button class="uk-button uk-border-rounded signup__btn">LOG IN</button>
+
+    </form>
+
+</div>
+
+<div class="center-align">
+    <p class="redirect-signup center-align uk-position-bottom-center">
+        Want to join us? <a href="{{ url_for('register') }}" class="signup-text">Sign Up Here</a>
+    </p>
+</div>
+
+{% endblock %}
