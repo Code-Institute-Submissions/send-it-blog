@@ -53,9 +53,23 @@
       </nav>
     </header>
 
-    <div uk-grid>
-      {% block content %} {% endblock %}
-    </div>
+    <section>
+        <!-- Flash messages displayed here! -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="flashes">
+                        <h4 class="center-align flashed-message">{{ message }}</h4>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </section>
+
+    <main uk-grid>
+      {% block content %}
+      {% endblock %}
+    </main>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.13/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.13/dist/js/uikit-icons.min.js"></script>
     <script src="{{ url_for('static', filename='js/scripts.css') }}"></script>

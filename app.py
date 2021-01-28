@@ -28,6 +28,26 @@ def get_posts():
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    if request.method == "POST":
+        #check if username/email already exists in database
+        existing_user = mongo.db.users.find_one(
+            {"email": request.form.get("email").lower()})
+        if existing_user:
+            flash("Email already exists")
+            return redirect(url_for("register"))
+
+        register = {
+            "firstname": request.form.get("firstname").lower(),
+            "lastname": request.form.get("lastname").lower(),
+            "email": request.form.get("email").lower(),
+            "password": generate_password_hash(request.form.get("password"))
+        }
+        mongo.db.users.insert_one(register)
+
+        #put newly created user into session cookie
+        session["user"] = request.form.get("email").lower()
+        flash("Registration Successful, Welcome!")
+
     return render_template("register.html")
 
 
