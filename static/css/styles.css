@@ -1,12 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Arima+Madurai:wght@100;200;300;400;500;700;800;900&display=swap');
 
 /* Utility classes */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
 .center-align {
     text-align: center;
 }
 
 body {
+    background-color: #fff;
     color: #000;
     font-family: 'Arima Madurai', Courier, monospace;
 }
@@ -83,4 +89,11 @@ body {
 
 .profile__image {
     margin: 0 auto;
+}
+
+/* posts page */
+
+.hero__text {
+    font-size: 4.5rem;
+    font-weight: 900;
 }
