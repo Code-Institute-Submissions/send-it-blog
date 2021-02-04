@@ -78,3 +78,9 @@ body {
 .login-text {
     margin-right: 60px;
 }
+
+/* profile page */
+
+.profile__image {
+    margin: 0 auto;
+}
