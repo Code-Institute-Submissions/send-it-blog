@@ -16,7 +16,7 @@
   </head>
 
   <body>
-    <!-- navbar -->
+    <!-- Navbar -->
     <header>
       <nav class="uk-navbar-container uk-margin-large-bottom" uk-navbar>
         <div>
@@ -63,8 +63,8 @@
       </nav>
     </header>
 
+    <!-- Flash messages displayed here! -->
     <section>
-        <!-- Flash messages displayed here! -->
         {% with messages = get_flashed_messages() %}
             {% if messages %}
                 {% for message in messages %}
@@ -76,10 +76,12 @@
         {% endwith %}
     </section>
 
+    <!-- Main Content -->
     <main class="uk-flex-center" uk-grid>
       {% block content %}
       {% endblock %}
     </main>
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.13/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.13/dist/js/uikit-icons.min.js"></script>
     <script src="{{ url_for('static', filename='js/scripts.css') }}"></script>

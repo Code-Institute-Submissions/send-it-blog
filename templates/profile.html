@@ -1,15 +1,26 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "base.html" %} {% block content %}
 
-    <div uk-grid>
-        <div>
-            Welcome back, {{ username }}
-        </div>
+<div class="uk-flex-center" uk-grid>
+  <div>
+    Welcome back, {{ username }}
+  </div>
 
-        <div class="uk-position-center">
-            <img data-src="/images/home-images/dangelo.jpg" class="profile__image uk-border-circle" width="300" height="300"
-                alt="Profile picture of user" uk-img>
-        </div>
-    </div>
+  <div class="">
+    <img
+      data-src="/static/images/home-images/jazmine.jpg"
+      class="profile__image"
+      alt="Profile picture of user"
+      uk-img
+    />
+    <h3 class="bio__title center-align">BIO</h3>
+    <p class="bio__text center-align">Good sh*t only</p>
+  </div>
+
+  <div class="buttons uk-flex uk-flex-column">
+    <a class="uk-button-large uk-margin-small uk-border-rounded uk-button-secondary center-align">CREATE</a>
+
+    <a class="uk-button-large uk-margin-small uk-border-rounded uk-button-primary center-align">YOUR POSTS</a>
+  </div>
+</div>
 
 {% endblock %}
