@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="uk-flex-column center-align uk-width-1-2" uk-grid>
+    <div>
+        <h3>Create Post</h3>
+    </div>
+    <div>
+        <form method="POST" action="">
+            <fieldset class="uk-fieldset">
+                <legend class="uk-legend">New Post</legend>
+
+                <div class="uk-margin">
+                    <label for="post_title">Post Title</label>
+                    <input class="uk-input" name="post_title" id="post_title" minlength="5" maxlength="20" type="text" placeholder="Post Title" required/>
+                </div>
+
+                <div class="uk-margin">
+                    <label for="post_date">Post Date</label>
+                    <input class="uk-input" name="post_date" id="post_date" type="text" placeholder="Post Date" required/>
+                </div>
+
+                <div class="uk-margin">
+                    <label for="post_author">Post Author</label>
+                    <input class="uk-input" name="post_author" id="post_author" minlength="5" maxlength="20" type="text" placeholder="Post Author" required/>
+                </div>
+
+                <div class="uk-margin">
+                    <label for="post_preview">Post Preview</label>
+                    <input class="uk-input" name="post_preview" id="post_preview" minlength="5" maxlength="100" type="text" placeholder="Post Preview" required/>
+                </div>
+
+                <div class="uk-margin">
+                    <label for="post_content">Post Content</label>
+                    <textarea
+                    class="uk-textarea"
+                    rows="5"
+                    name="post_content" id="post_content"
+                    placeholder="Post Content"
+                    required></textarea>
+                </div>
+                <button class="uk-button uk-button-secondary">Publish!</button>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+
+
+{% endblock %}
