@@ -30,8 +30,10 @@
                     <div class="uk-width-expand">
                         <h3 class="uk-card-title uk-margin-remove-bottom">By {{ post.created_by }}</h3>
                         <p class="uk-text-meta uk-margin-remove-top">Posted: {{ post.post_date }}</p>
+                        {% if session.user|lower == post.created_by|lower %}
                         <a href="{{ url_for('edit_post', post_id=post._id) }}" uk-icon="icon: pencil"></a>
                         <a href="" uk-icon="icon: trash"></a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
