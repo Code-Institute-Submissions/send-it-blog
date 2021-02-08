@@ -102,8 +102,19 @@ def logout():
 
 
 
-@app.route("/create_post")
+@app.route("/create_post", methods=["GET", "POST"])
 def create_post():
+    if request.method == "POST":
+        posts = {
+            "post_title": request.form.get("post_title"),
+            "post_date": request.form.get("post_date"),
+            "post_preview": request.form.get("post_preview"),
+            "post_content": request.form.get("post_content"),
+            "created_by": session["user"]
+        }
+        mongo.db.posts.insert_one(posts)
+        flash("Post Successfully Published")
+        return redirect(url_for("get_posts"))
     return render_template("create_post.html")
 
 

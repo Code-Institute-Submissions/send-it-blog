@@ -6,30 +6,26 @@
         <h3>Create Post</h3>
     </div>
     <div>
-        <form method="POST" action="">
+        <form method="POST" action="{{ url_for('create_post' )}}">
             <fieldset class="uk-fieldset">
+                <!-- form title -->
                 <legend class="uk-legend">New Post</legend>
-
+                <!-- post titl input -->
                 <div class="uk-margin">
                     <label for="post_title">Post Title</label>
                     <input class="uk-input" name="post_title" id="post_title" minlength="5" maxlength="20" type="text" placeholder="Post Title" required/>
                 </div>
-
+                <!-- post date input -->
                 <div class="uk-margin">
                     <label for="post_date">Post Date</label>
                     <input class="uk-input" name="post_date" id="post_date" type="text" placeholder="Post Date" required/>
                 </div>
-
-                <div class="uk-margin">
-                    <label for="post_author">Post Author</label>
-                    <input class="uk-input" name="post_author" id="post_author" minlength="5" maxlength="20" type="text" placeholder="Post Author" required/>
-                </div>
-
+                <!-- post preview input -->
                 <div class="uk-margin">
                     <label for="post_preview">Post Preview</label>
                     <input class="uk-input" name="post_preview" id="post_preview" minlength="5" maxlength="100" type="text" placeholder="Post Preview" required/>
                 </div>
-
+                <!-- content text input  -->
                 <div class="uk-margin">
                     <label for="post_content">Post Content</label>
                     <textarea
@@ -39,6 +35,7 @@
                     placeholder="Post Content"
                     required></textarea>
                 </div>
+                <!-- submit button -->
                 <button class="uk-button uk-button-secondary">Publish!</button>
             </fieldset>
         </form>
