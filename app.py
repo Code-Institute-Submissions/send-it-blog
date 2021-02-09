@@ -26,6 +26,13 @@ def get_posts():
     return render_template("posts.html", posts=posts)
 
 
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    query = request.form.get("query")
+    posts = list(mongo.db.posts.find({"$text": {"$search": query}}))
+    return render_template("posts.html", posts=posts)
+
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
@@ -141,7 +148,7 @@ def delete_post(post_id):
     flash("Post Successfully Deleted")
     return redirect(url_for("get_posts"))
 
-    
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
