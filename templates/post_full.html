@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="uk-flex-column center-align uk-width-1-2" uk-grid>
+    <article class="uk-article">
+
+    <h1 class="uk-article-title post__title"><a class="uk-link-reset" href="">{{ post.post_title }}</a></h1>
+
+    <p class="uk-article-meta created__by">Written by {{ post.created_by }}</p>
+
+    <p class="uk-text-lead post__preview">{{ post.post_preview }}</p>
+
+    <p class="post__content">{{ post.post_content }}</p>
+
+    
+
+</article>
+</div>
+
+
+
+{% endblock %}

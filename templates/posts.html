@@ -16,10 +16,10 @@
     <div>
         <div class="uk-card uk-card-default">
             <div class="uk-card-media-top">
-                <img src="/static/images/home-images/rakei.jpg" alt="Image of Jordan Rakei">
+                <a href="{{ url_for('post_full', post_id=post._id) }}"><img src="/static/images/home-images/rakei.jpg" alt="Image of Jordan Rakei"></a>
             </div>
             <div class="uk-card-body">
-                <h3 class="uk-card-title">{{ post.post_title }}</h3>
+                <a href="{{ url_for('post_full', post_id=post._id) }}"><h3 class="uk-card-title">{{ post.post_title }}</h3></a>
                 <p>{{ post.post_preview }}</p>
             </div>
             <div class="uk-card-footer">
