@@ -8,7 +8,9 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/uikit@3.6.13/dist/css/uikit.min.css"
     />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.6/basic.min.css" integrity="sha512-MeagJSJBgWB9n+Sggsr/vKMRFJWs+OUphiDV7TJiYu+TNQD9RtVJaPDYP8hA/PAjwRnkdvU+NsTncYTKlltgiw==" crossorigin="anonymous" />
+    <link 
+      rel="stylesheet" 
+      href="{{ url_for('static', filename='css/dropzone.min.css') }}" />
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='css/styles.css') }}"
@@ -86,7 +88,7 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.13/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.13/dist/js/uikit-icons.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.6/min/dropzone.min.js" integrity="sha512-KgeSi6qqjyihUcmxFn9Cwf8dehAB8FFZyl+2ijFEPyWu4ZM8ZOQ80c2so59rIdkkgsVsuTnlffjfgkiwDThewQ==" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='js/dropzone.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
     {% block scripts %} {% endblock%}
   </body>

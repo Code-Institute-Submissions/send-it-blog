@@ -95,6 +95,10 @@ body {
     height: 300px;
 }
 
+.profile-image-div {
+    border: none;
+}
+
 /* posts page */
 
 .hero__text {

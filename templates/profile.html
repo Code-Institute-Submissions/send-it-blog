@@ -6,12 +6,29 @@
   </div>
 
   <div class="">
-    <img
+    <a class="uk-button uk-button-default profile-image-div" href="#image-modal" uk-toggle><img
       data-src="/static/images/home-images/jazmine.jpg"
       class="profile__image"
       alt="Profile picture of user"
       uk-img
-    />
+    /></a>
+    <div id="image-modal" class="uk-flex-top" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+            <button class="uk-modal-close-default" type="button" uk-close></button>
+            <div class="uk-modal-header">
+                <h2 class="uk-modal-title">Edit Profile Picture</h2>
+            </div>
+            <div class="uk-modal-body">
+                <form action="/file-upload"
+                    class="dropzone"
+                    id="image-dropzone"></form>
+            </div>
+            <div class="uk-modal-footer uk-text-right">
+                <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+                <button class="uk-button uk-button-primary" type="button">Save</button>
+            </div>
+        </div>
+    </div>
     <h3 class="bio__title center-align">BIO</h3>
     <p class="bio__text center-align">Good sh*t only</p>
     <p class="account__user">{{ username }}</p>
@@ -27,6 +44,11 @@
     <a
       class="uk-button-large uk-margin-small uk-border-rounded uk-button-primary center-align"
       >YOUR POSTS</a
+    >
+
+    <a
+      class="uk-button-large uk-margin-small uk-border-rounded uk-button-default center-align"
+      >EDIT PROFILE</a
     >
   </div>
 </div>
