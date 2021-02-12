@@ -6,16 +6,18 @@
         <h3>Edit Profile</h3>
     </div>
     <div>
-        <form method="POST" action="{{ url_for('edit_post', post_id=post._id) }}">
-            <!-- post date input -->
+        <form action="/edit_profile" method="POST" enctype="multipart/form-data">
             <div class="uk-margin">
-                <form action="{{ url_for('upload_files') }}" class="dropzone">
-                </form>
+                <label>Select image</label>
+                <div class="custom-file">
+                    <input type="file" class="" name="image" id="image">
+                    <label for="image"></label>
+                </div>
             </div>
             <!-- Cancel button -->
-            <a href="{{ url_for('get_posts') }}" class="uk-button uk-button-danger">Cancel Edit</a>
+            <a href="{{ url_for('profile', username=session['user']) }}" class="uk-button uk-button-danger">Cancel Edit</a>
             <!-- Edit button -->
-            <button class="uk-button uk-button-secondary">Edit Post!</button>
+            <button type="submit" class="uk-button uk-button-secondary">Edit Profile!</button>
         </form>
     </div>
 </div>

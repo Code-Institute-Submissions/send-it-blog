@@ -5,6 +5,7 @@ from flask import (
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.utils import secure_filename
 if os.path.exists("env.py"):
     import env
 
@@ -13,6 +14,20 @@ app = Flask(__name__)
 
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
+app.config["IMAGE_UPLOADS"] = "/workspace/send-it-blog/static/images/blog-images/uploads"
+app.config["UPLOAD_EXTENSIONS"] = ["JPG", "JPEG", "PNG", "GIF"]
+
+def allowed_extenstions(filename):
+    if not "." in filename:
+        return False
+
+    ext = filename.rsplit(".", 1)[1]
+
+    if ext.upper() in app.config["UPLOAD_EXTENSIONS"]:
+        return True
+    else:
+        return False    
+
 app.secret_key = os.environ.get("SECRET_KEY")
 
 
@@ -153,6 +168,38 @@ def delete_post(post_id):
 def post_full(post_id):
     post = mongo.db.posts.find_one({"_id": ObjectId(post_id)})
     return render_template("post_full.html", post=post)
+
+
+@app.route("/edit_profile", methods=["GET", "POST"])
+def edit_profile():
+
+    if request.method == "POST":
+
+        if request.files:
+            image = request.files["image"]
+
+            # check if image has a name
+            if image.filename == "":
+                flash("Image file must have a name")
+                return render_template("edit_profile.html")
+
+            # check if image is allowed file type
+            if not allowed_extenstions(image.filename):
+                flash("Image format not accepted")
+                return render_template("edit_profile.html")
+
+            # give file a secure filename
+            else:
+                filename = secure_filename(image.filename)
+
+            image.save(os.path.join(app.config["IMAGE_UPLOADS"], filename))
+
+            print("image saved")
+
+            return redirect(url_for('profile', username=session['user']))
+
+    return render_template("edit_profile.html")
+
 
 
 if __name__ == "__main__":
