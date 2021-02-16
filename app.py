@@ -16,6 +16,8 @@ app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.config["IMAGE_UPLOADS"] = "/workspace/send-it-blog/static/images/blog-images/uploads"
 app.config["UPLOAD_EXTENSIONS"] = ["JPG", "JPEG", "PNG", "GIF"]
+app.config["MAX_IMAGE_FILESIZE"] = 2 * 1024 * 1024
+
 
 def allowed_extenstions(filename):
     if not "." in filename:
@@ -26,7 +28,8 @@ def allowed_extenstions(filename):
     if ext.upper() in app.config["UPLOAD_EXTENSIONS"]:
         return True
     else:
-        return False    
+        return False
+
 
 app.secret_key = os.environ.get("SECRET_KEY")
 
@@ -123,7 +126,6 @@ def logout():
     return redirect(url_for("login"))
 
 
-
 @app.route("/create_post", methods=["GET", "POST"])
 def create_post():
     if request.method == "POST":
@@ -170,36 +172,51 @@ def post_full(post_id):
     return render_template("post_full.html", post=post)
 
 
+def allowed_image_filesize(filesize):
+
+    if int(filesize) <= app.config["MAX_IMAGE_FILESIZE"]:
+        return True
+    else:
+        return False
+
+
 @app.route("/edit_profile", methods=["GET", "POST"])
 def edit_profile():
 
     if request.method == "POST":
 
         if request.files:
-            image = request.files["image"]
 
-            # check if image has a name
-            if image.filename == "":
-                flash("Image file must have a name")
-                return render_template("edit_profile.html")
+            if "filesize" in request.cookies:
 
-            # check if image is allowed file type
-            if not allowed_extenstions(image.filename):
-                flash("Image format not accepted")
-                return render_template("edit_profile.html")
+                if not allowed_image_filesize(request.cookies.get("filesize")):
+                    print("File exceeded maximum size")
+                    return redirect(url_for('profile', username=session['user']))
 
-            # give file a secure filename
-            else:
-                filename = secure_filename(image.filename)
+                image = request.files["image"]
 
-            image.save(os.path.join(app.config["IMAGE_UPLOADS"], filename))
+                # check if image has a name
+                if image.filename == "":
+                    flash("Image file must have a name")
+                    return render_template("edit_profile.html")
 
-            print("image saved")
+                # check if image is allowed file type
+                if allowed_extenstions(image.filename):
+                    filename = secure_filename(image.filename)
 
-            return redirect(url_for('profile', username=session['user']))
+                    image.save(os.path.join(app.config["IMAGE_UPLOADS"], filename))
+
+                    print("image saved")
+                    flash("Upload Successfull!")
+
+                    return redirect(url_for('profile', username=session['user']))
+
+                else:
+                    flash("Image format not accepted")
+
+                    return render_template("edit_profile.html")
 
     return render_template("edit_profile.html")
-
 
 
 if __name__ == "__main__":
