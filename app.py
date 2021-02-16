@@ -191,7 +191,8 @@ def edit_profile():
 
                 if not allowed_image_filesize(request.cookies.get("filesize")):
                     print("File exceeded maximum size")
-                    return redirect(url_for('profile', username=session['user']))
+                    flash("File exceeded maximum size")
+                    return render_template("edit_profile.html")
 
                 image = request.files["image"]
 
