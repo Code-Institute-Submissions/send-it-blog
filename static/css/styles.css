@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Arima+Madurai:wght@100;200;300;400;500;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mitr:wght@200;300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 /* Utility classes */
 * {
@@ -14,15 +15,17 @@
 body {
     background-color: #fff;
     color: #000;
-    font-family: 'Arima Madurai', Courier, monospace;
+    font-family: 'Mitr', Courier, monospace;
+    font-weight: 300;
+
 }
 
 /* base template */
 
 .logo {
-    font-family: 'Arima Madurai', Courier, monospace;
+    font-family: 'Mitr', Courier, monospace;
     font-size: 3rem;
-    font-weight: 900;
+    font-weight: 400;
 }
 
 #nav__items {
@@ -31,11 +34,11 @@ body {
 
 .nav__item {
     font-size: 1.7rem;
-    font-weight: 700;
+    font-weight: 300;
 }
 
 .tagline {
-    font-family: 'Arima Madurai', Courier, monospace;
+    font-family: 'Mitr', Courier, monospace;
     font-size: .8rem;
     font-weight: 200;
 }
@@ -52,21 +55,21 @@ body {
 /* register template */
 
 .signup__title {
-    font-family: 'Arima Madurai', Courier, monospace;
+    font-family: 'Mitr', Courier, monospace;
     font-size: 2rem;
-    font-weight: 800;
+    font-weight: 300;
 }
 
 .signup__btn {
     background-color: #27fb6b;
     color: #000;
-    font-weight: 900;
+    font-weight: 300;
     font-size: 1.2rem;
 }
 
 .flashed-message {
     line-height: 2;
-    font-family: 'Arima Madurai', Courier, monospace;
+    font-family: 'Mitr', Courier, monospace;
 }
 
 .redirect-signup {
@@ -104,4 +107,5 @@ body {
 .hero__text {
     font-size: 4.5rem;
     font-weight: 900;
+    font-family: 'Philosopher', Courier, monospace;
 }
