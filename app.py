@@ -1,4 +1,5 @@
 import os
+import datetime
 from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
@@ -40,15 +41,15 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/get_posts")
 def get_posts():
-    posts = mongo.db.posts.find()
-    return render_template("posts.html", posts=posts)
+    show_all_posts = mongo.db.posts.find()
+    return render_template("index.html", posts=show_all_posts)
 
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
     query = request.form.get("query")
     posts = list(mongo.db.posts.find({"$text": {"$search": query}}))
-    return render_template("posts.html", posts=posts)
+    return render_template("index.html", posts=posts)
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -129,9 +130,10 @@ def logout():
 @app.route("/create_post", methods=["GET", "POST"])
 def create_post():
     if request.method == "POST":
+        todays_date = datetime.date.today()
         posts = {
             "post_title": request.form.get("post_title"),
-            "post_date": request.form.get("post_date"),
+            "post_date": todays_date,
             "post_preview": request.form.get("post_preview"),
             "post_content": request.form.get("post_content"),
             "created_by": session["user"]
@@ -145,9 +147,10 @@ def create_post():
 @app.route("/edit_post/<post_id>", methods=["GET", "POST"])
 def edit_post(post_id):
     if request.method == "POST":
+        edited_on_date = datetime.date.today()
         edited_data = {
             "post_title": request.form.get("post_title"),
-            "post_date": request.form.get("post_date"),
+            "post_date": edited_on_date,
             "post_preview": request.form.get("post_preview"),
             "post_content": request.form.get("post_content"),
             "created_by": session["user"]
