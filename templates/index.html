@@ -16,10 +16,10 @@
     <div>
         <div class="uk-card uk-card-default">
             <div class="uk-card-media-top">
-                <a href="{{ url_for('post_full', post_id=post._id) }}"><img src="/static/images/blog-images/rakei.jpg" alt="Image of Jordan Rakei"></a>
+                <a href="{{ url_for('get_post', post_id=post._id) }}"><img src="/static/images/blog-images/rakei.jpg" alt="Image of Jordan Rakei"></a>
             </div>
             <div class="uk-card-body">
-                <a href="{{ url_for('post_full', post_id=post._id) }}"><h3 class="uk-card-title">{{ post.post_title }}</h3></a>
+                <a href="{{ url_for('get_post', post_id=post._id) }}"><h3 class="uk-card-title">{{ post.post_title }}</h3></a>
                 <p>{{ post.post_preview }}</p>
             </div>
             <div class="uk-card-footer">
@@ -30,6 +30,7 @@
                     <div class="uk-width-expand">
                         <h3 class="uk-card-title uk-margin-remove-bottom">By {{ post.created_by }}</h3>
                         <p class="uk-text-meta uk-margin-remove-top">Posted: {{ post.post_date }}</p>
+                        <p class="uk-text-meta uk-margin-remove-top">Edited On: {{ post.edited_on }}</p>
                         {% if session.user|lower == post.created_by|lower %}
                         <a href="{{ url_for('edit_post', post_id=post._id) }}" uk-icon="icon: pencil"></a>
                         <a href="#delete-modal" uk-icon="icon: trash" uk-toggle></a>

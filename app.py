@@ -1,5 +1,6 @@
 import os
 import datetime
+import cloudinary
 from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
@@ -12,6 +13,12 @@ if os.path.exists("env.py"):
 
 
 app = Flask(__name__)
+
+cloudinary.config.update = ({
+    'cloudinary_name': os.environ.get('CLOUDINARY_NAME'),
+    'api_key': os.environ.get('CLOUDINARY_API_KEY'),
+    'api_secret': os.environ.get('CLOUDINARY_API_SECRET')
+})
 
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
@@ -147,10 +154,12 @@ def create_post():
 @app.route("/edit_post/<post_id>", methods=["GET", "POST"])
 def edit_post(post_id):
     if request.method == "POST":
-        edited_on_date = datetime.date.today()
+        post_date = mongo.db.posts.post_date.find_one()
+        edited_on = datetime.date.today()
         edited_data = {
             "post_title": request.form.get("post_title"),
-            "post_date": edited_on_date,
+            "post_date": post_date,
+            "edited_on": edited_on.strftime("%m/%d/%Y"),
             "post_preview": request.form.get("post_preview"),
             "post_content": request.form.get("post_content"),
             "created_by": session["user"]
@@ -170,10 +179,10 @@ def delete_post(post_id):
     return redirect(url_for("get_posts"))
 
 
-@app.route("/post_full/<post_id>")
-def post_full(post_id):
+@app.route("/get_post/<post_id>")
+def get_post(post_id):
     post = mongo.db.posts.find_one({"_id": ObjectId(post_id)})
-    return render_template("post_full.html", post=post)
+    return render_template("get_post.html", post=post)
 
 
 def allowed_image_filesize(filesize):
@@ -198,7 +207,7 @@ def edit_profile():
                 image = request.files["image"]
 
                 # check if image has a name
-                if image.filename == "":
+                if not image.filename:
                     flash("Image file must have a name")
                     return render_template("edit_profile.html")
 
