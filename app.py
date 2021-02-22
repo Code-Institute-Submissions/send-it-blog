@@ -145,15 +145,16 @@ def create_post():
 @app.route("/edit_post/<post_id>", methods=["GET", "POST"])
 def edit_post(post_id):
     if request.method == "POST":
-        edit = {
+        edited_data = {
             "post_title": request.form.get("post_title"),
             "post_date": request.form.get("post_date"),
             "post_preview": request.form.get("post_preview"),
             "post_content": request.form.get("post_content"),
             "created_by": session["user"]
         }
-        mongo.db.posts.update({"_id": ObjectId(post_id)}, edit)
+        mongo.db.posts.update({"_id": ObjectId(post_id)}, edited_data)
         flash("Post Successfully Edited")
+        return redirect(url_for("get_posts"))
     
     post = mongo.db.posts.find_one({"_id": ObjectId(post_id)})
     return render_template("edit_post.html", post=post)
@@ -173,22 +174,19 @@ def post_full(post_id):
 
 
 def allowed_image_filesize(filesize):
-
-    if int(filesize) <= app.config["MAX_IMAGE_FILESIZE"]:
+    return int(filesize) <= app.config["MAX_IMAGE_FILESIZE"]
+    """ if int(filesize) <= app.config["MAX_IMAGE_FILESIZE"]:
         return True
     else:
-        return False
+        return False """
 
 
 @app.route("/edit_profile", methods=["GET", "POST"])
 def edit_profile():
 
     if request.method == "POST":
-
         if request.files:
-
             if "filesize" in request.cookies:
-
                 if not allowed_image_filesize(request.cookies.get("filesize")):
                     print("File exceeded maximum size")
                     flash("File exceeded maximum size")
