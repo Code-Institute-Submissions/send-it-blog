@@ -185,51 +185,6 @@ def get_post(post_id):
     return render_template("get_post.html", post=post)
 
 
-def allowed_image_filesize(filesize):
-    return int(filesize) <= app.config["MAX_IMAGE_FILESIZE"]
-    """ if int(filesize) <= app.config["MAX_IMAGE_FILESIZE"]:
-        return True
-    else:
-        return False """
-
-
-@app.route("/edit_profile", methods=["GET", "POST"])
-def edit_profile():
-
-    if request.method == "POST":
-        if request.files:
-            if "filesize" in request.cookies:
-                if not allowed_image_filesize(request.cookies.get("filesize")):
-                    print("File exceeded maximum size")
-                    flash("File exceeded maximum size")
-                    return render_template("edit_profile.html")
-
-                image = request.files["image"]
-
-                # check if image has a name
-                if not image.filename:
-                    flash("Image file must have a name")
-                    return render_template("edit_profile.html")
-
-                # check if image is allowed file type
-                if allowed_extenstions(image.filename):
-                    filename = secure_filename(image.filename)
-
-                    image.save(os.path.join(app.config["IMAGE_UPLOADS"], filename))
-
-                    print("image saved")
-                    flash("Upload Successfull!")
-
-                    return redirect(url_for('profile', username=session['user']))
-
-                else:
-                    flash("Image format not accepted")
-
-                    return render_template("edit_profile.html")
-
-    return render_template("edit_profile.html")
-
-
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),

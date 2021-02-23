@@ -19,9 +19,10 @@
                 <h2 class="uk-modal-title">Edit Profile Picture</h2>
             </div>
             <div class="uk-modal-body">
-                <form action="/file-upload"
-                    class="dropzone"
-                    id="image-dropzone"></form>
+                <form method="post" enctype="multipart/form-data">
+                    <input type="file" name="files[]" multiple>
+                    <input type="submit" value="Upload Files" name="submit">
+                </form>
             </div>
             <div class="uk-modal-footer uk-text-right">
                 <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
@@ -44,12 +45,6 @@
     <a
       class="uk-button-large uk-margin-small uk-border-rounded uk-button-primary center-align"
       >YOUR POSTS</a
-    >
-
-    <a
-      href="{{ url_for('edit_profile') }}"
-      class="uk-button-large uk-margin-small uk-border-rounded uk-button-default center-align"
-      >EDIT PROFILE</a
     >
   </div>
 </div>
