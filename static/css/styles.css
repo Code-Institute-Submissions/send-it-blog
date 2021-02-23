@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Mitr:wght@200;300;400;500;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 /* Utility classes */
@@ -15,7 +14,7 @@
 body {
     background-color: #fff;
     color: #000;
-    font-family: 'Mitr', Courier, monospace;
+    font-family: 'Philosopher', Courier, monospace;
     font-weight: 300;
 
 }
@@ -23,9 +22,9 @@ body {
 /* base template */
 
 .logo {
-    font-family: 'Mitr', Courier, monospace;
+    font-family: 'Philosopher', Courier, monospace;
     font-size: 3rem;
-    font-weight: 400;
+    font-weight: 700;
 }
 
 #nav__items {
@@ -38,7 +37,7 @@ body {
 }
 
 .tagline {
-    font-family: 'Mitr', Courier, monospace;
+    font-family: 'Philosopher', Courier, monospace;
     font-size: .8rem;
     font-weight: 200;
 }
@@ -52,10 +51,17 @@ body {
     padding-right: 3px;
 }
 
+/* index template */
+
+.created-by__text,
+.title__text {
+    font-family: 'Philosopher', Courier, monospace;
+}
+
 /* register template */
 
 .signup__title {
-    font-family: 'Mitr', Courier, monospace;
+    font-family: 'Philosopher', Courier, monospace;
     font-size: 2rem;
     font-weight: 300;
 }
@@ -69,7 +75,7 @@ body {
 
 .flashed-message {
     line-height: 2;
-    font-family: 'Mitr', Courier, monospace;
+    font-family: 'Philosopher', Courier, monospace;
 }
 
 .redirect-signup {
@@ -88,7 +94,13 @@ body {
     margin-right: 60px;
 }
 
-/* profile page */
+/* log in template */
+
+.join-us__text {
+    margin-left: 60px;
+}
+
+/* profile template */
 
 .profile__image {
     margin: 0 auto;

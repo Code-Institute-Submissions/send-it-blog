@@ -11,7 +11,7 @@
     </div>
 </div>
 <!-- main posts content -->
-<div class="uk-flex-center uk-width-1-1 uk-child-width-1-2@s uk-child-width-1-3@m uk-margin-xlarge-top" uk-grid="masonry: true">
+<div class="uk-flex-center uk-width-1-1 uk-child-width-1-2@s uk-child-width-1-3@m uk-margin-xlarge-top" uk-grid>
     {% for post in posts %}
     <div>
         <div class="uk-card uk-card-default">
@@ -19,7 +19,7 @@
                 <a href="{{ url_for('get_post', post_id=post._id) }}"><img src="/static/images/blog-images/rakei.jpg" alt="Image of Jordan Rakei"></a>
             </div>
             <div class="uk-card-body">
-                <a href="{{ url_for('get_post', post_id=post._id) }}"><h3 class="uk-card-title">{{ post.post_title }}</h3></a>
+                <a href="{{ url_for('get_post', post_id=post._id) }}"><h3 class="uk-card-title title__text">{{ post.post_title }}</h3></a>
                 <p>{{ post.post_preview }}</p>
             </div>
             <div class="uk-card-footer">
@@ -28,7 +28,7 @@
                         <img class="uk-border-pill" width="100" height="100" src="/static/images/blog-images/rakei.jpg">
                     </div>
                     <div class="uk-width-expand">
-                        <h3 class="uk-card-title uk-margin-remove-bottom">By {{ post.created_by }}</h3>
+                        <h3 class="uk-card-title uk-margin-remove-bottom created-by__text">By {{ post.created_by }}</h3>
                         <p class="uk-text-meta uk-margin-remove-top">Posted: {{ post.post_date }}</p>
                         <p class="uk-text-meta uk-margin-remove-top">Edited On: {{ post.edited_on }}</p>
                         {% if session.user|lower == post.created_by|lower %}
@@ -61,55 +61,6 @@
         </div>
     </div>
 
-<div class="uk-flex-center uk-width-1-1 uk-child-width-1-2@s uk-child-width-1-3@m" uk-grid="masonry: true">
-    <div>
-        <div class="uk-card uk-card-default uk-flex uk-flex-center uk-flex-middle" style="height: 200px">Item</div>
-    </div>
-    <div>
-        <div class="uk-card uk-card-default uk-flex uk-flex-center uk-flex-middle" style="height: 260px">Item</div>
-    </div>
-    <div>
-        <div class="uk-card uk-card-default uk-flex uk-flex-center uk-flex-middle" style="height: 300px">Item</div>
-    </div>
-    <div>
-        <div class="uk-card uk-card-default uk-flex uk-flex-center uk-flex-middle" style="height: 320px">Item</div>
-    </div>
-    <div>
-        <div class="uk-card uk-card-default uk-flex uk-flex-center uk-flex-middle" style="height: 240px">Item</div>
-    </div>
-    <div>
-        <div class="uk-card uk-card-default uk-flex uk-flex-center uk-flex-middle" style="height: 280px">Item</div>
-    </div>
-</div>
 
-<div class="uk-text-center uk-margin-xlarge	">
-        <div class="uk-inline-clip uk-transition-toggle" tabindex="0">
-            <img data-src="/static/images/blog-images/marvin.jpg" width="500" height="500" alt="Image of Marvin Gaye" uk-img>
-            <div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-default">
-                <p class="uk-h4 uk-margin-remove">Bottom</p>
-            </div>
-        </div>
-    </div>
-
-<div class="uk-flex-center uk-width-1-1 uk-child-width-1-2@s uk-child-width-1-3@m" uk-grid="masonry: true">
-    <div>
-        <div class="uk-card uk-card-default uk-flex uk-flex-center uk-flex-middle" style="height: 200px">Item</div>
-    </div>
-    <div>
-        <div class="uk-card uk-card-default uk-flex uk-flex-center uk-flex-middle" style="height: 260px">Item</div>
-    </div>
-    <div>
-        <div class="uk-card uk-card-default uk-flex uk-flex-center uk-flex-middle" style="height: 300px">Item</div>
-    </div>
-    <div>
-        <div class="uk-card uk-card-default uk-flex uk-flex-center uk-flex-middle" style="height: 320px">Item</div>
-    </div>
-    <div>
-        <div class="uk-card uk-card-default uk-flex uk-flex-center uk-flex-middle" style="height: 240px">Item</div>
-    </div>
-    <div>
-        <div class="uk-card uk-card-default uk-flex uk-flex-center uk-flex-middle" style="height: 280px">Item</div>
-    </div>
-</div>
 
 {% endblock %}
