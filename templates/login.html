@@ -1,7 +1,16 @@
+{% block styles %} 
+
+<link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/login.css') }}"
+    />
+
+{% endblock%}
+
 {% extends "base.html" %}
 {% block content %}
 
-<div class="uk-card uk-card-default uk-card-body uk-width-1-2@m uk-align-center uk-border-rounded">
+<div class="uk-card uk-card-default uk-card-body uk-width-1-2 uk-align-center uk-border-rounded uk-position-center form__card">
     <!-- form header -->
     <h3 class="uk-card-title center-align signup__title">WELCOME BACK!</h3>
 
@@ -29,10 +38,9 @@
 
     </form>
 
-   
-        <p class="redirect-signup uk-margin-top center-align join-us__text">
-            Want to join us? <a href="{{ url_for('register') }}" class="signup-text">Sign Up Here</a>
-        </p>
+    <p class="redirect-signup uk-margin-top center-align">
+        Want to join us? <a href="{{ url_for('register') }}" class="signup-text">Sign Up Here</a>
+    </p>
 
 
 </div>

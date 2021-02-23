@@ -1,0 +1,12 @@
+body {
+    background-image: url('/static/images/blog-images/sign.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+
+}
+
+.form__card {
+    background-color: rgba(255, 255, 255, .4);
+}
+
