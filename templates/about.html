@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="uk-flex-middle uk-width-1-1" uk-grid>
+    <section class="team__section uk-section uk-align-center">
+        <div class="uk-width-1-1 center-align">
+            <img data-src="/static/images/blog-images/about.jpg" class="main-about__img" width="1200" alt="Image of the 'Send it on' team" uk-img>
+        </div>
+        <h2 class="our-team__header center-align">Our Team</h2>
+        <p class="about-team__text center-align uk-align-center uk-width-1-2">
+            We started as a group of friends, sharing similar interests. On long summer nights,
+            we often found ourselves with a drink in hand talking about music and culture until 
+            the early mornings. These constant conversations led us to first investigate starting
+            a podcast. Availability difficulties put paid to that idea but then someone threw out 
+            the idea of a website, a blog to be specific. One were each of us could post the latest
+            things we all talk about in our own free time. <br /> <br />
+
+            This is where the concept of this blog was born. The name stemming from the transparent
+            process of us sending ideas, tidbits and news on to each other through the blog. It also 
+            comes from a group favourite song by D'angelo, Send It On. We wanted to make this site 
+            with content coming from topics we care about individually and as a group. Music lovers 
+            and culture keepers from around the world. We all do different things and have different 
+            experiences in life but we all share the love for the content we bring to this blog so 
+            we hope you enjoy! If anyone has questions, ideas or would like to work with us as a group,
+            feel free to get at us on our contact page.
+        </p>
+    </section>
+
+    <section class="member__section uk-section center-align uk-width-1-1">
+        <div class="uk-panel uk-flex">
+            <img class="uk-align-left member__image" src="/static/images/blog-images/member1.jpg" width="300" height="300" alt="Example image">
+            <div class="member__description uk-width-1-2">
+            <h3 class="member__header uk-text-left">Jimmy</h3>
+            <p class="member__text uk-flex-left">A coder by day and dj by night, Jimmy grew up in London and now resides in Stockholm. Always ready for a party or equally a conversation about music.</p>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+{% endblock %}
