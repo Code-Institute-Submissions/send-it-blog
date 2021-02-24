@@ -23,14 +23,20 @@
     <header>
       <nav class="uk-navbar-container uk-margin-large-bottom navbar" uk-navbar>
         <div>
-            <a class="uk-navbar-toggle uk-margin-small-left" uk-search-icon href="#"></a>
+            {% if not self._TemplateReference__context.name == "index.html" %}
+            <a class="uk-disabled uk-navbar-toggle uk-margin-small-left search__icon" uk-search-icon href="#"></a>
+            {% else %}
+            <a class="uk-navbar-toggle uk-margin-small-left search__icon" uk-search-icon href="#"></a>
+            {% endif %}
             <div class="uk-drop" uk-drop="mode: click; pos: right-center; offset: 0">
                 <form action="{{ url_for('search') }}" method="POST" class="uk-search uk-search-navbar uk-width-1-2">
                     <input class="uk-search-input" name="query" id="query" minlength="3" type="search" placeholder="Search..." autofocus required>
                     <label for="query"></label>
                 </form>
             </div>
+            
         </div>
+        
         <a class="uk-navbar-item uk-navbar-center uk-logo logo" href="{{ url_for('get_posts') }}">SEND IT...</a>  
         <a href="#offcanvas-slide" class="uk-position-center-right uk-margin-medium-right" uk-toggle uk-icon="icon: menu; ratio: 2;"></a>
 

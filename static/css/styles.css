@@ -12,7 +12,7 @@
 }
 
 body {
-    background-color: #fff;
+    background-color: #f6f6f5;
     color: #000;
     font-family: 'Philosopher', Courier, monospace;
     font-weight: 300;
@@ -25,10 +25,15 @@ body {
     background-color: rgba(255, 255, 255, .4);
 }
 
+.search__icon {
+    color: #000;
+}
+
 .logo {
     font-family: 'Philosopher', Courier, monospace;
     font-size: 3rem;
     font-weight: 700;
+    color: #000;
 }
 
 #nav__items {
@@ -90,11 +95,14 @@ body {
     top: 90%;
 }
 
-.signup-text,
-.login-text,
+.signup-header-text,
 .redirect-signup,
 .signup__title,
 .redirect-login {
+    color: #000;
+}
+
+.input__text {
     color: #000;
 }
 
@@ -106,6 +114,18 @@ body {
     object-fit: cover;
     width: 300px;
     height: 300px;
+}
+
+.image__overlay {
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+    
+}
+
+.upload__icon {
+    border: none;
 }
 
 .profile-image-div {
