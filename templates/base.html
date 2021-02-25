@@ -47,7 +47,7 @@
               <hr class="uk-divider-small uk-margin-small">
               <li><a href="{{ url_for('about') }}" class="nav__item">ABOUT</a></li>
               <hr class="uk-divider-small uk-margin-small">
-              <li><a href="#" class="nav__item">CONTACT</a></li>
+              <li><a href="{{ url_for('contact') }}" class="nav__item">CONTACT</a></li>
               <hr class="uk-divider-small uk-margin-small">
               {% if session.user %}
                 <li><a href="{{ url_for('profile', username=session['user']) }}" class="nav__item">PROFILE</a></li>
