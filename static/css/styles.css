@@ -152,6 +152,10 @@ body {
     object-fit: cover;
 }
 
+.member__header {
+    font-family: 'Philosopher', Courier, monospace;
+}
+
 .member__description {
     margin-top: 100px;  
 }
