@@ -1,52 +1,47 @@
 {% extends "base.html" %} {% block content %}
 
-<div class="uk-flex-center" uk-grid>
-  <div>
-    Welcome back, {{ username }}
-  </div>
+<div class="center-align uk-width-1-1">
+    <h1 class="welcome__title">Welcome back, {{ username }}</h1>
+</div>
 
-  <div class="">
-    <div class="profile-image-div uk-transition-toggle uk-inline tabindex="0" >
-        <img data-src="/static/images/blog-images/jazmine.jpg" class="profile__image" alt="Profile picture of user" uk-img/>
-        <div class="uk-overlay uk-overlay-primary uk-position-bottom uk-transition-slide-bottom-small image__overlay">
-            <a href="#image-modal" class="uk-button uk-button-default uk-position-center upload__icon" uk-icon="icon: upload; ratio: 2" uk-toggle></a>
-            <div id="image-modal" class="uk-flex-top" uk-modal>
-                <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
-                    <button class="uk-modal-close-default" type="button" uk-close></button>
-                    <div class="uk-modal-header">
-                        <h2 class="uk-modal-title">Edit Profile Picture</h2>
-                    </div>
-                    <div class="uk-modal-body">
-                        <form method="post" enctype="multipart/form-data">
-                            <input type="file" name="files[]" multiple>
-                            <input type="submit" value="Upload Files" name="submit">
-                        </form>
-                    </div>
-                    <div class="uk-modal-footer uk-text-right">
-                        <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
-                        <button class="uk-button uk-button-primary" type="button">Save</button>
+<div class="uk-flex container uk-width-1-1" uk-grid>
+
+    <section class="profile__section uk-flex uk-flex-column uk-width-1-2 uk-align-center">
+        <div class="profile-image-div uk-transition-toggle uk-inline tabindex='0' uk-align-center">
+            <img data-src="/static/images/blog-images/jazmine.jpg" class="profile__image" alt="Profile picture of user" uk-img/>
+            <div class="uk-overlay uk-overlay-primary uk-position-bottom uk-transition-slide-bottom-small image__overlay uk-align-center uk-flex-middle">
+                <a href="#image-modal" class="uk-button uk-button-default uk-position-center upload__icon" uk-icon="icon: upload; ratio: 2" uk-toggle></a>
+                <div id="image-modal" class="uk-flex-top" uk-modal>
+                    <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+                        <button class="uk-modal-close-default" type="button" uk-close></button>
+                        <div class="uk-modal-header">
+                            <h2 class="uk-modal-title">Edit Profile Picture</h2>
+                        </div>
+                        <div class="uk-modal-body">
+                            <form method="post" enctype="multipart/form-data">
+                                <input type="file" name="files[]" multiple>
+                                <input type="submit" value="Upload Files" name="submit">
+                            </form>
+                        </div>
+                        <div class="uk-modal-footer uk-text-right">
+                            <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+                            <button class="uk-button uk-button-primary" type="button">Save</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <h3 class="bio__title center-align">BIO</h3>
-    <p class="bio__text center-align">Good sh*t only</p>
-    <p class="account__user">{{ username }}</p>
-  </div>
+        <div class="uk-align-center uk-flex">
+            <button class="create__btn uk-text-middle uk-flex-middle uk-button uk-margin-small uk-border-rounded uk-button-secondary"><a href="{{ url_for('create_post') }}" class="link">CREATE</a></button>
+        </div>
+    </section>
 
-  <div class="buttons uk-flex uk-flex-column">
-    <a
-      href="{{ url_for('create_post') }}"
-      class="uk-button-large uk-margin-small uk-border-rounded uk-button-secondary center-align"
-      >CREATE</a
-    >
-
-    <a
-      class="uk-button-large uk-margin-small uk-border-rounded uk-button-primary center-align"
-      >YOUR POSTS</a
-    >
-  </div>
+    <section class="uk-width-1-2 uk-flex uk-flex-column uk-align-center your-posts__section">
+        <h2 class="your-posts__title center-align">Your Posts</h2>
+        <div class="your-posts__content center-align">
+            <p>CONTENTTT</p>
+        </div>
+    </section>
 </div>
 
 {% endblock %}

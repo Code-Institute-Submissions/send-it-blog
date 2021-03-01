@@ -48,7 +48,7 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/get_posts")
 def get_posts():
-    show_all_posts = mongo.db.posts.find()
+    show_all_posts = mongo.db.posts.find().sort("_id", -1)
     return render_template("index.html", posts=show_all_posts)
 
 
@@ -124,6 +124,13 @@ def profile(username):
         return render_template("profile.html", username=username)
 
     return redirect(url_for("login"))
+
+
+def your_posts():
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+    
+    show_user_posts = mongo.db.posts.find({created_by: username})
 
 
 @app.route("/logout")

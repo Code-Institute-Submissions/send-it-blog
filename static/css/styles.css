@@ -19,6 +19,13 @@ body {
 
 }
 
+.link:visited,
+.link:hover,
+.link:active {
+    color: white;
+    text-decoration: none;
+}
+
 /* base template */
 
 .uk-navbar-container:not(.uk-navbar-transparent) {
@@ -108,8 +115,13 @@ body {
 
 /* profile template */
 
+.welcome__title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    font-family: 'Philosopher', Courier, monospace;
+}
+
 .profile__image {
-    margin: 0 auto;
     border-radius: 50%;
     object-fit: cover;
     width: 300px;
@@ -130,6 +142,24 @@ body {
 
 .profile-image-div {
     border: none;
+}
+
+.create__btn {
+    width: 15rem;
+    height: 4rem;
+    font-size: 2rem;
+    font-weight: 900;
+    text-decoration: none;
+}
+
+.your-posts__section {
+    background-color: #27fb6b;
+}
+
+.your-posts__title {
+    font-size: 2rem;
+    font-weight: 900;
+    font-family: 'Philosopher', Courier, monospace;
 }
 
 /* posts page */
