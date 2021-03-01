@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 /* Utility classes */
 * {
@@ -23,34 +24,39 @@ body {
 .link:visited,
 .link:hover,
 .link:active {
-    color: white;
+    color: #f6f6f5;
     text-decoration: none;
 }
 
 /* base template */
 
 .uk-navbar-container:not(.uk-navbar-transparent) {
-    background-color: rgba(255, 255, 255, .4);
+    background-color:#2d3028;
+    color: #f6f6f5;
 }
 
 .search__icon {
-    color: #000;
+    color: #f6f6f5;
 }
 
 .logo {
     font-family: 'Philosopher', Courier, monospace;
     font-size: 3rem;
     font-weight: 700;
-    color: #000;
+    color: #f6f6f5;
 }
 
 #nav__items {
-    color: #fff;
+    color: #f6f6f5;
 }
 
 .nav__item {
     font-size: 1.7rem;
     font-weight: 300;
+} 
+
+.offcanvas__nav {
+    background-color: #2d3028;
 }
 
 .tagline {
@@ -69,6 +75,18 @@ body {
 }
 
 /* index template */
+
+.hero__text {
+    font-size: 5.3rem;
+    font-weight: 800;
+    font-family: 'Roboto Slab', Courier, monospace;
+}
+
+.main__content {
+    background-color: #2e3029;
+    padding: 5rem 5rem;
+    margin-left: 1px
+}
 
 .created-by__text,
 .title__text {
@@ -163,14 +181,6 @@ body {
     font-family: 'Philosopher', Courier, monospace;
     font-size: 1.5rem;
     font-weight: 900;
-}
-
-/* posts page */
-
-.hero__text {
-    font-size: 4.5rem;
-    font-weight: 900;
-    font-family: 'Philosopher', Courier, monospace;
 }
 
 /* about template */

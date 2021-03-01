@@ -24,9 +24,9 @@
       <nav class="uk-navbar-container uk-margin-medium-bottom navbar" uk-navbar>
         <div>
             {% if not self._TemplateReference__context.name == "index.html" %}
-            <a class="uk-disabled uk-navbar-toggle uk-margin-small-left search__icon" uk-search-icon href="#"></a>
+            <a class="uk-disabled uk-navbar-toggle uk-margin-small-left search__icon link" uk-search-icon href="#"></a>
             {% else %}
-            <a class="uk-navbar-toggle uk-margin-small-left search__icon" uk-search-icon href="#"></a>
+            <a class="uk-navbar-toggle uk-margin-small-left search__icon link" uk-search-icon href="#"></a>
             {% endif %}
             <div class="uk-drop" uk-drop="mode: click; pos: right-center; offset: 0">
                 <form action="{{ url_for('search') }}" method="POST" class="uk-search uk-search-navbar uk-width-1-2">
@@ -37,11 +37,11 @@
             
         </div>
         
-        <a class="uk-navbar-item uk-navbar-center uk-logo logo" href="{{ url_for('get_posts') }}">SEND IT...</a>  
-        <a href="#offcanvas-slide" class="uk-position-center-right uk-margin-medium-right" uk-toggle uk-icon="icon: menu; ratio: 2;"></a>
+        <a class="uk-navbar-item uk-navbar-center uk-logo logo link" href="{{ url_for('get_posts') }}">SEND IT...</a>  
+        <a href="#offcanvas-slide" class="uk-position-center-right uk-margin-medium-right link" uk-toggle uk-icon="icon: menu; ratio: 2;"></a>
 
         <div id="offcanvas-slide" uk-offcanvas="flip: true; mode: reveal;">
-          <div class="uk-offcanvas-bar">
+          <div class="uk-offcanvas-bar offcanvas__nav">
             <ul class="uk-nav" id="nav__items">
               <li><a href="{{ url_for('get_posts') }}" class="nav__item">HOME</a></li>
               <hr class="uk-divider-small uk-margin-small">
