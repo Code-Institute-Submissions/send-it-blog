@@ -1,3 +1,4 @@
+{% extends "base.html" %}
 {% block styles %} 
 
 <link
@@ -7,66 +8,67 @@
 
 {% endblock%}
 
-{% extends "base.html" %}
 {% block content %}
 
-<div class="uk-card uk-card-default uk-card-body uk-width-1-2 uk-align-center uk-border-rounded form__card uk-position-center">
-    <!-- form header -->
-    <h3 class="uk-card-title center-align signup__title">JOIN US!</h3>
-    <p class="signup-header-text center-align">We would love to have you as part of our team</p>
+<div class="uk-flex container uk-width-1-1" uk-grid>
+    <div class="uk-flex-center uk-flex-middle uk-card uk-card-default uk-card-body uk-width-1-2 uk-align-center uk-border-rounded form__card">
+        <!-- form header -->
+        <h3 class="uk-card-title center-align signup__title">JOIN US!</h3>
+        <p class="signup-header-text center-align">We would love to have you as part of our team</p>
 
-    <!-- form content -->
-    <form class="center-align uk-form-stacked" method="POST" action="{{ url_for('register') }}">
+        <!-- form content -->
+        <form class="center-align uk-form-stacked" method="POST" action="{{ url_for('register') }}">
 
-    <!-- first name -->
-        <div class="uk-margin">
-            <div class="uk-inline input__text">
-                <label for="firstname">First Name</label>
-                <input class="uk-input uk-border-rounded" type="text" id="firstname" name="firstname" placeholder="First Name" required>
+        <!-- first name -->
+            <div class="uk-margin">
+                <div class="uk-inline input__text">
+                    <label for="firstname">First Name</label>
+                    <input class="uk-input uk-border-rounded" type="text" id="firstname" name="firstname" placeholder="First Name" required>
+                </div>
             </div>
-        </div>
-    <!-- last name -->
-        <div class="uk-margin">
-            <div class="uk-inline input__text">
-                <label for="lastname">Last Name</label>
-                <input class="uk-input uk-border-rounded" type="text" id="lastname" name="lastname" placeholder="Last Name" required>
-                <label for="lastname"></label>
+        <!-- last name -->
+            <div class="uk-margin">
+                <div class="uk-inline input__text">
+                    <label for="lastname">Last Name</label>
+                    <input class="uk-input uk-border-rounded" type="text" id="lastname" name="lastname" placeholder="Last Name" required>
+                    <label for="lastname"></label>
+                </div>
             </div>
-        </div>
-    <!-- username -->
-        <div class="uk-margin">
-            <div class="uk-inline input__text">
-                <label for="username">Username</label>
-                <input class="uk-input uk-border-rounded" type="text" id="username" name="username" placeholder="Username" required>
-                <label for="username"></label>
+        <!-- username -->
+            <div class="uk-margin">
+                <div class="uk-inline input__text">
+                    <label for="username">Username</label>
+                    <input class="uk-input uk-border-rounded" type="text" id="username" name="username" placeholder="Username" required>
+                    <label for="username"></label>
+                </div>
             </div>
-        </div>
-    <!-- email -->
-        <div class="uk-margin">
-            <div class="uk-inline input__text">
-                <label for="email">Email</label>
-                <input class="uk-input uk-border-rounded" type="email" id="email" name="email" placeholder="Email" required>
-                <label for="email"></label>
+        <!-- email -->
+            <div class="uk-margin">
+                <div class="uk-inline input__text">
+                    <label for="email">Email</label>
+                    <input class="uk-input uk-border-rounded" type="email" id="email" name="email" placeholder="Email" required>
+                    <label for="email"></label>
+                </div>
             </div>
-        </div>
-    <!-- password -->
-        <div class="uk-margin input__text">
-            <div class="uk-inline">
-                <label for="password">Password</label>
-                <input class="uk-input uk-border-rounded" minlength="5" maxlength="15" type="password" id="password" name="password" placeholder="Enter A Password" required>
-                <label for="password"></label>
+        <!-- password -->
+            <div class="uk-margin input__text">
+                <div class="uk-inline">
+                    <label for="password">Password</label>
+                    <input class="uk-input uk-border-rounded" minlength="5" maxlength="15" type="password" id="password" name="password" placeholder="Enter A Password" required>
+                    <label for="password"></label>
+                </div>
             </div>
-        </div>
-    <!-- sign up button -->
-        <button class="uk-button uk-border-rounded signup__btn">SIGN UP</button>
+        <!-- sign up button -->
+            <button class="uk-button uk-border-rounded signup__btn">SIGN UP</button>
 
-    </form>
+        </form>
 
-    <p class="redirect-login uk-margin-top center-align">
-        Already Registered? <a href="{{ url_for('login') }}" class="login-text">Log In Here</a>
-    </p>
-    
+        <p class="redirect-login uk-margin-top center-align">
+            Already Registered? <a href="{{ url_for('login') }}" class="login-text">Log In Here</a>
+        </p>
+        
 
+    </div>
 </div>
 
 {% endblock %}

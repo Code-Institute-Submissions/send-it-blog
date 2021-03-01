@@ -21,7 +21,7 @@
   <body>
     <!-- Navbar -->
     <header>
-      <nav class="uk-navbar-container uk-margin-medium-bottom navbar" uk-navbar>
+      <nav class="uk-navbar-container uk-margin-medium-bottom navbar" style="z-index: 980;" uk-sticky="show-on-up: true; animation: uk-animation-slide-top; bottom: #bottom" uk-navbar>
         <div>
             {% if not self._TemplateReference__context.name == "index.html" %}
             <a class="uk-disabled uk-navbar-toggle uk-margin-small-left search__icon link" uk-search-icon href="#"></a>
@@ -91,6 +91,26 @@
       {% block content %}
       {% endblock %}
     </main>
+
+    <!-- Footer -->
+    <footer>
+        <div id="bottom" class="uk-section uk-section-secondary uk-light footer">
+            <div class="uk-container">
+
+                <p class="center-align">A Tastemakers Taste On Music & Culture</p>
+
+                <div class="center-align">
+                    <a href="https://www.linkedin.com/in/ivan-lupaka-56255550/" class="uk-margin-medium-right" uk-icon="icon: linkedin; ratio: 1.5" target="_blank"></a>
+                    <a href="https://github.com/louparker" class="uk-margin-auto" uk-icon="icon: github; ratio: 1.5" target="_blank"></a>
+                    <a href="https://www.instagram.com/ivan_thedj/" class="uk-margin-medium-left" uk-icon="icon: instagram; ratio: 1.5" target="_blank"></a>
+                </div>
+
+                <p class="center-align"> &#169; 2021 Ivan Lupaka</p>
+
+            </div>
+        </div>
+    </footer>
+
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.13/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.13/dist/js/uikit-icons.min.js"></script>

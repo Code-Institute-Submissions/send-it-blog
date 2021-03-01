@@ -1,6 +1,8 @@
 import os
 import datetime
 import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
@@ -179,6 +181,14 @@ def about():
 @app.route("/contact")
 def contact():
     return render_template("contact.html")
+
+def upload():
+    if request.method == "POST":
+        photo = request.files['photo_url']
+        photo_upload = cloudinary.uploader.upload(photo)
+        review = {
+            "photo_url": photo_upload["secure_url"]
+        }
 
 
 if __name__ == "__main__":
