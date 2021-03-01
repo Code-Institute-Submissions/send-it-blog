@@ -7,7 +7,6 @@ from flask import (
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
-from werkzeug.utils import secure_filename
 if os.path.exists("env.py"):
     import env
 
@@ -22,21 +21,6 @@ cloudinary.config.update = ({
 
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
-app.config["IMAGE_UPLOADS"] = "/workspace/send-it-blog/static/images/blog-images/uploads"
-app.config["UPLOAD_EXTENSIONS"] = ["JPG", "JPEG", "PNG", "GIF"]
-app.config["MAX_IMAGE_FILESIZE"] = 2 * 1024 * 1024
-
-
-def allowed_extenstions(filename):
-    if not "." in filename:
-        return False
-
-    ext = filename.rsplit(".", 1)[1]
-
-    if ext.upper() in app.config["UPLOAD_EXTENSIONS"]:
-        return True
-    else:
-        return False
 
 
 app.secret_key = os.environ.get("SECRET_KEY")
