@@ -4,11 +4,69 @@
 <div class="uk-flex-middle uk-width-1-1" uk-grid>
     <section class="contact__section uk-section uk-align-center">
         <div class="uk-width-1-1 center-align">
-            <img data-src="/static/images/blog-images/about.jpg" class="main-about__img" width="1200" alt="Image of the 'Send it on' team" uk-img>
+            <img data-src="/static/images/blog-images/hello.jpg" class="main-contact__img" width="1200" alt="Image of hello sign" uk-img>
         </div>
-        
+        <form id="contact-form" class="uk-margin-medium-top">
+            <fieldset class="uk-fieldset">
+
+                <legend class="uk-legend center-align">Send Us A Message</legend>
+
+                <div class="uk-margin center-align">
+                    <label for="user_name">Name</label>
+                    <input class="uk-input" id="user_name" minlength="5" maxlength="50" type="text" placeholder="Name" required>
+                </div>
+
+                <div class="uk-margin center-align">
+                    <label for="user_email">Email</label>
+                    <input class="uk-input" type="email" id="user_email" minlength="5" maxlength="50" placeholder="Email" required>
+                </div>
+
+                <div class="uk-margin center-align">
+                    <label for="message">Message</label>
+                    <textarea class="uk-textarea" type="text" id="message" rows="5" minlength="5" maxlength="500" placeholder="Your Message..." required></textarea>
+                </div>
+
+                <button type="submit" class="uk-button uk-button-secondary uk-align-center uk-border-rounded">Submit</button>
+
+                <div id="email-response" class="email-response center-align"></div>
+
+            </fieldset>
+        </form>
     </section>
 
 </div>
 
 {% endblock %}
+
+{% block scripts %} 
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+
+<script>
+    (function() {
+    emailjs.init("user_1B6GV9ph5G756D7ZIJMM0");
+    })();
+</script>
+
+<script>
+
+const response = document.getElementById("email-response");
+
+window.onload = function() {
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            emailjs.sendForm('service_i7yn20o', 'contact_form', this)
+                .then(function() {
+                    response.innerHTML = "Thanks, our team will get back to you shortly!";
+                }, function(error) {
+                    response.innerHTML = "Unfortunately there was an error, please try again later.";
+                });
+
+                document.getElementById("contact-form").reset();
+                return false;
+        });
+    }
+
+</script>
+
+{% endblock%}
