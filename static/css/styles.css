@@ -16,6 +16,7 @@ body {
     color: #000;
     font-family: 'Philosopher', Courier, monospace;
     font-weight: 300;
+    height: 100vh;
 
 }
 
@@ -152,14 +153,16 @@ body {
     text-decoration: none;
 }
 
-.your-posts__section {
-    background-color: #27fb6b;
-}
-
 .your-posts__title {
     font-size: 2rem;
     font-weight: 900;
     font-family: 'Philosopher', Courier, monospace;
+}
+
+.preview__title {
+    font-family: 'Philosopher', Courier, monospace;
+    font-size: 1.5rem;
+    font-weight: 900;
 }
 
 /* posts page */
@@ -188,4 +191,9 @@ body {
 
 .member__description {
     margin-top: 100px;  
+}
+/* contact template */
+
+.contact__background {
+    background-color:  #f6f6f5;
 }

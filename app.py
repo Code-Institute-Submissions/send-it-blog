@@ -120,17 +120,12 @@ def profile(username):
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
 
+    show_user_posts = mongo.db.posts.find({"created_by": username}).sort("_id", -1).limit(3)
+
     if session["user"]:
-        return render_template("profile.html", username=username)
+        return render_template("profile.html", username=username, posts=show_user_posts)
 
     return redirect(url_for("login"))
-
-
-def your_posts():
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
-    
-    show_user_posts = mongo.db.posts.find({created_by: username})
 
 
 @app.route("/logout")

@@ -38,8 +38,25 @@
 
     <section class="uk-width-1-2 uk-flex uk-flex-column uk-align-center your-posts__section">
         <h2 class="your-posts__title center-align">Your Posts</h2>
-        <div class="your-posts__content center-align">
-            <p>CONTENTTT</p>
+        <div class="your-posts__content uk-flex center-align">
+            {% for post in posts %}
+            <div class="uk-card uk-card-default uk-margin-auto uk-flex-center uk-flex-row uk-width-1-4">
+                <div class="uk-card-header">
+                    <div class="uk-grid-small uk-flex-middle" uk-grid>
+                        <div class="uk-width-auto">
+                            <h3 class="uk-card-title uk-margin-remove-bottom preview__title">{{ post.post_title }}</h3>
+                            <p class="uk-text-meta uk-margin-remove-top">{{ post.post_date }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-card-body">
+                    <img class="uk-border-circle" width="40" height="40" src="images/avatar.jpg">
+                </div>
+                <div class="uk-card-footer">
+                    <a href="{{ url_for('get_post', post_id=post._id) }}" class="uk-button uk-button-text">Read more</a>
+                </div>
+            </div>
+            {% endfor %}
         </div>
     </section>
 </div>
