@@ -1,5 +1,5 @@
 import os
-import datetime
+from datetime import datetime
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
@@ -125,10 +125,11 @@ def logout():
 @app.route("/create_post", methods=["GET", "POST"])
 def create_post():
     if request.method == "POST":
-        todays_date = datetime.date.today()
+        now = datetime.now()
+        date_time = now.strftime("%d/%m/%Y")
         posts = {
             "post_title": request.form.get("post_title"),
-            "post_date": todays_date,
+            "post_date": date_time,
             "post_preview": request.form.get("post_preview"),
             "post_content": request.form.get("post_content"),
             "created_by": session["user"]
@@ -162,8 +163,14 @@ def edit_post(post_id):
 
 @app.route("/delete_post/<post_id>")
 def delete_post(post_id):
+    rule = request.url_rule
+
     mongo.db.posts.remove({"_id": ObjectId(post_id)})
     flash("Post Successfully Deleted")
+
+    if 'your_posts' in rule.rule:
+        return redirect(url_for("your_posts"))
+
     return redirect(url_for("get_posts"))
 
 

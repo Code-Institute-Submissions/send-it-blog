@@ -225,3 +225,11 @@ body {
 .contact__background {
     background-color:  #f6f6f5;
 }
+
+/* your posts template */
+
+.your-posts__header {
+    font-family: 'Philosopher', Courier, monospace;
+    font-size: 3rem;
+    font-weight: 900;
+}
