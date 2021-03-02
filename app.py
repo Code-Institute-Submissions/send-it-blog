@@ -191,6 +191,15 @@ def upload():
         }
 
 
+@app.route("/your_posts")
+def your_posts():
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+
+    show_user_posts = mongo.db.posts.find({"created_by": username}).sort("_id", -1)
+    return render_template("your_posts.html", posts=show_user_posts)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
