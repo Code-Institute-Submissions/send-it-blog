@@ -52,17 +52,13 @@ def register():
         if existing_user:
             flash("Username already exists")
             return redirect(url_for("register"))
-        
-        photo = request.files['photo_url']
-        photo_upload = cloudinary.uploader.upload(photo, upload_preset="n0wdtp5o")
 
         register = {
             "firstname": request.form.get("firstname").lower(),
             "lastname": request.form.get("lastname").lower(),
             "username": request.form.get("username").lower(),
             "email": request.form.get("email").lower(),
-            "password": generate_password_hash(request.form.get("password")),
-            "photo_url": photo_upload['secure_url']
+            "password": generate_password_hash(request.form.get("password"))
         }
         mongo.db.users.insert_one(register)
 
@@ -110,11 +106,9 @@ def profile(username):
 
     show_user_posts = mongo.db.posts.find({"created_by": username}).sort("_id", -1).limit(3)
 
-    profile_url = mongo.db.users.find_one({"username": username})["photo_url"]
-
     if session["user"]:
         
-        return render_template("profile.html", username=username, posts=show_user_posts, profile_url=profile_url)
+        return render_template("profile.html", username=username, posts=show_user_posts)
 
     return redirect(url_for("login"))
 
@@ -168,7 +162,7 @@ def edit_post(post_id):
         now = datetime.now()
         date_time = now.strftime("%d/%m/%Y")
 
-        
+
 
         edited_data = {
             "post_title": request.form.get("post_title"),
