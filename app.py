@@ -159,10 +159,10 @@ def create_post():
 @app.route("/edit_post/<post_id>", methods=["GET", "POST"])
 def edit_post(post_id):
     if request.method == "POST":
+        show_all_posts = mongo.db.posts.find().sort("_id", -1)
+
         now = datetime.now()
         date_time = now.strftime("%d/%m/%Y")
-
-
 
         edited_data = {
             "post_title": request.form.get("post_title"),
@@ -170,11 +170,11 @@ def edit_post(post_id):
             "edited_on": date_time,
             "post_preview": request.form.get("post_preview"),
             "post_content": request.form.get("post_content"),
-            "created_by": session["user"]
+            "created_by": session["user"],
         }
         mongo.db.posts.update({"_id": ObjectId(post_id)}, edited_data)
         flash("Post Successfully Edited")
-        return redirect(url_for("get_posts"))
+        return render_template("index.html", posts=show_all_posts)
     
     post = mongo.db.posts.find_one({"_id": ObjectId(post_id)})
     return render_template("edit_post.html", post=post)
@@ -216,6 +216,37 @@ def your_posts():
 
     show_user_posts = mongo.db.posts.find({"created_by": username}).sort("_id", -1)
     return render_template("your_posts.html", posts=show_user_posts)
+
+
+@app.route("/uploader", methods=["GET", "POST"])
+def uploader():
+    if request.method == "POST":
+        username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+
+        show_user_posts = mongo.db.posts.find({"created_by": username}).sort("_id", -1).limit(3)
+
+        profile_url = mongo.db.users.find({"username": username}, { "photo_url"}, {_id:0})
+
+        print(f"url_key: {show_user_posts}")
+        print(f"url_key: {profile_url}")
+
+        photo = request.files['photo_url']
+
+        to_split = username
+        split = to_split.rsplit()
+        name = map(str.strip, split) 
+        url_key = ''.join(name)
+        
+        photo_upload = cloudinary.uploader.upload(photo, upload_preset="n0wdtp5o", public_id=url_key)
+
+        new_photo = f"https://res.cloudinary.com/ivanprojects/image/upload/send-it-images/{url_key}.jpg"
+
+        mongo.db.users.update_one({"username": username}, {"$set": { "photo_url": new_photo }})
+
+        return render_template("profile.html", username=username, posts=show_user_posts, photo_url=new_photo, profile_url=profile_url)
+    
+    return render_template("upload_image.html")
 
 
 if __name__ == "__main__":

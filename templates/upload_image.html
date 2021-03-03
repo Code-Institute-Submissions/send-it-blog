@@ -1,0 +1,15 @@
+{% extends "base.html" %} 
+{% block content %}
+
+<h1>Image Uploader</h1>
+
+<div class="upload__container">
+    <form method="POST" action="{{ url_for('uploader' )}}" enctype="multipart/form-data">
+        <input type="file" accept="image/*" name="photo_url" id="photo_url">
+        <input class="file-path validate" type="text">
+        <input type="submit" value="Upload Files" name="submit">
+    </form>
+</div>
+                        
+
+{% endblock %}

@@ -33,6 +33,7 @@ body {
 .uk-navbar-container:not(.uk-navbar-transparent) {
     background-color:#2d3028;
     color: #f6f6f5;
+    padding: 1vw 0 1vw 0;
 }
 
 .search__icon {
@@ -41,7 +42,7 @@ body {
 
 .logo {
     font-family: 'Philosopher', Courier, monospace;
-    font-size: 3rem;
+    font-size: 5vw;
     font-weight: 700;
     color: #f6f6f5;
 }
@@ -83,7 +84,7 @@ body {
 /* index template */
 
 .hero__text {
-    font-size: 5.3rem;
+    font-size: 5.3vw;
     font-weight: 800;
     font-family: 'Roboto Slab', Courier, monospace;
 }
@@ -94,9 +95,13 @@ body {
     margin-left: 1px
 }
 
-.created-by__text,
-.title__text {
+.created-by__text {
     font-family: 'Philosopher', Courier, monospace;
+}
+
+.title__text {
+    font-family: 'Roboto Slab', Courier, monospace;
+    font-weight: 400;
 }
 
 /* register template */

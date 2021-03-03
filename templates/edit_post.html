@@ -6,14 +6,14 @@
         <h3>Edit Post</h3>
     </div>
     <div>
-        <form method="POST" action="{{ url_for('edit_post', post_id=post._id) }}">
+        <form method="POST" action="{{ url_for('edit_post', post_id=post._id) }}" enctype="multipart/form-data">
             <fieldset class="uk-fieldset">
                 <!-- form title -->
                 <legend class="uk-legend">New Post</legend>
                 <!-- post title input -->
                 <div class="uk-margin">
                     <label for="post_title">Post Title</label>
-                    <input class="uk-input" name="post_title" id="post_title" minlength="5" maxlength="20" value="{{ post.post_title }}" type="text" placeholder="Post Title" required/>
+                    <input class="uk-input" name="post_title" id="post_title" minlength="5" maxlength="35" value="{{ post.post_title }}" type="text" placeholder="Post Title" required/>
                 </div>
                 <!-- post preview input -->
                 <div class="uk-margin">
@@ -30,6 +30,7 @@
                     placeholder="Post Content"
                     required>{{- post.post_content -}}</textarea>
                 </div>
+
                 <!-- Cancel button -->
                 <a href="{{ url_for('get_posts') }}" class="uk-button uk-button-danger">Cancel Edit</a>
                 <!-- Edit button -->

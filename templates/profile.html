@@ -13,26 +13,7 @@
         </div>
         <div class="uk-align-center uk-flex-column">
             <div>
-                <a href="#image-modal" class=" uk-align-center uk-button uk-button-default upload__icon" uk-icon="icon: upload; ratio: 2" uk-toggle></a>
-                <div id="image-modal" class="uk-flex-top" uk-modal>
-                    <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
-                        <button class="uk-modal-close-default" type="button" uk-close></button>
-                        <div class="uk-modal-header">
-                            <h2 class="uk-modal-title">Edit Profile Picture</h2>
-                        </div>
-                        <div class="uk-modal-body">
-                            <form method="post" enctype="multipart/form-data">
-                                <input type="file" accept="image/*" name="photo_url" id="photo_url">
-                                <input class="file-path validate" type="text">
-                                <input type="submit" value="Upload Files" name="submit">
-                            </form>
-                        </div>
-                        <div class="uk-modal-footer uk-text-right">
-                            <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
-                            <button class="uk-button uk-button-primary" type="button">Save</button>
-                        </div>
-                    </div>
-                </div>
+                <a href="{{ url_for('uploader') }}" class=" uk-align-center uk-button uk-button-default upload__icon" uk-icon="icon: upload; ratio: 2" uk-toggle></a>
             </div>
             <button class="create__btn uk-text-middle uk-flex-middle uk-button uk-margin-small uk-border-rounded uk-button-secondary"><a href="{{ url_for('create_post') }}" class="link">CREATE</a></button>
         </div>
@@ -52,7 +33,7 @@
                     </div>
                 </div>
                 <div class="uk-card-body">
-                    <img class="uk-border-circle" width="40" height="40" src="images/avatar.jpg">
+                    <img src="{{ post.photo_url }}">
                 </div>
                 <div class="uk-card-footer">
                     <a href="{{ url_for('get_post', post_id=post._id) }}" class="uk-button uk-button-text">Read more</a>
