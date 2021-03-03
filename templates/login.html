@@ -11,7 +11,7 @@
 
 {% block content %}
 
-<div class="uk-flex container uk-width-1-1" uk-grid>
+<div class="uk-flex login__container uk-width-1-2 uk-flex-center uk-flex-middle" uk-grid>
     <div class="uk-flex-center uk-flex-middle uk-card uk-card-default uk-card-body uk-width-1-2 uk-align-center uk-border-rounded form__card">
         <!-- form header -->
         <h3 class="uk-card-title center-align signup__title">WELCOME BACK!</h3>
@@ -35,14 +35,10 @@
             </div>
         <!-- log in button -->
             <button class="uk-button uk-border-rounded signup__btn">LOG IN</button>
-
         </form>
-
         <p class="redirect-signup uk-margin-top center-align">
-            Want to join us? <a href="{{ url_for('register') }}" class="signup-text">Sign Up Here</a>
+            Want to join us? <a href="{{ url_for('register') }}" class="signup-text uk-text-italic">Sign Up Here</a>
         </p>
-
-
     </div>
 </div>
 

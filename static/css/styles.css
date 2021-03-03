@@ -82,7 +82,7 @@ body {
 .footer {
     padding: 30px 0 30px 0;
     background-color: #2e3029;
-    margin-top: 8rem;
+    margin-top: 6rem;
 }
 
 /* index template */
@@ -145,6 +145,10 @@ body {
 
 .input__text {
     color: #000;
+}
+
+.login__container {
+    height: 100vh;
 }
 
 /* profile template */
@@ -254,9 +258,9 @@ body {
 /* your posts template */
 
 .your-posts__header {
-    font-family: 'Philosopher', Courier, monospace;
+    font-family: 'Roboto Slab', Courier, monospace;
     font-size: 3rem;
-    font-weight: 900;
+    font-weight: 500;
 }
 
 .post__title {

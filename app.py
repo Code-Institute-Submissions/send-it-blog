@@ -139,7 +139,12 @@ def create_post():
         
         photo_upload = cloudinary.uploader.upload(photo, upload_preset="n0wdtp5o", public_id=url_key)
 
-        new_photo = f"https://res.cloudinary.com/ivanprojects/image/upload/send-it-images/{url_key}.jpg"
+        print(photo_upload.get("secure_url"))
+        print(url_key)
+
+        public_id = photo_upload.get("public_id")
+
+        new_photo = f"https://res.cloudinary.com/ivanprojects/image/upload/{public_id}.jpg"
 
         posts = {
             "post_title": request.form.get("post_title"),

@@ -10,7 +10,7 @@
 
 {% block content %}
 
-<div class="uk-flex container uk-width-1-1" uk-grid>
+<div class="uk-flex container uk-width-1-2" uk-grid>
     <div class="uk-flex-center uk-flex-middle uk-card uk-card-default uk-card-body uk-width-1-2 uk-align-center uk-border-rounded form__card">
         <!-- form header -->
         <h3 class="uk-card-title center-align signup__title">JOIN US!</h3>
@@ -65,7 +65,7 @@
         </form>
 
         <p class="redirect-login uk-margin-top center-align">
-            Already Registered? <a href="{{ url_for('login') }}" class="login-text">Log In Here</a>
+            Already Registered? <a href="{{ url_for('login') }}" class="login-text uk-text-italic">Log In Here</a>
         </p>
         
 

@@ -13,7 +13,7 @@
                 <!-- post title input -->
                 <div class="uk-margin">
                     <label for="post_title">Post Title</label>
-                    <input class="uk-input" name="post_title" id="post_title" minlength="5" maxlength="35" type="text" placeholder="Post Title" required/>
+                    <input class="uk-input" name="post_title" id="post_title" minlength="5" maxlength="50" type="text" placeholder="Post Title" required/>
                 </div>
                 <!-- post preview input -->
                 <div class="uk-margin">
@@ -32,12 +32,13 @@
                 </div>
 
                 <div class="uk-align-center">
-                    <input type="file" accept="image/*" name="photo_url" id="photo_url">
-                    <input type="submit" value="Upload Files" name="submit">
+                    <input type="file" accept="image/*" name="photo_url" 
+                    id="photo_url">
+                    <!-- submit button -->
+                    <input class="uk-button uk-button-secondary" type="submit" 
+                    value="Upload Files" name="submit">
                 </div>
                         
-                <!-- submit button -->
-                <button class="uk-button uk-button-secondary">Publish!</button>
             </fieldset>
         </form>
     </div>
