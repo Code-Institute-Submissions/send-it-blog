@@ -5,7 +5,7 @@
     <h1 class="welcome__title">Welcome back, {{ username }}</h1>
 </div>
 
-<div class="uk-flex container uk-width-1-1" uk-grid>
+<div class="uk-flex profile__container uk-width-1-1" uk-grid>
 
     <section class="profile__section uk-flex uk-flex-column uk-width-1-2 uk-align-center">
         <div class="profile-image-div uk-transition-toggle uk-inline tabindex='0' uk-align-center">
@@ -23,7 +23,7 @@
         <h2 class="your-posts__title center-align">Your Posts</h2>
         <div class="your-posts__content uk-flex center-align">
             {% for post in posts %}
-            <div class="uk-card uk-card-default uk-margin-auto uk-flex-center uk-flex-row uk-width-1-4">
+            <div class="uk-card uk-card-default uk-margin-auto uk-flex-center uk-flex-row uk-width-1-4@s">
                 <div class="uk-card-header">
                     <div class="uk-grid-small uk-flex-middle" uk-grid>
                         <div class="uk-width-auto">
@@ -32,7 +32,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="uk-card-body">
+                <div class="uk-card-body preview__image">
                     <img src="{{ post.photo_url }}">
                 </div>
                 <div class="uk-card-footer">
