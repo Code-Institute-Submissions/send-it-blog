@@ -15,16 +15,14 @@ if os.path.exists("env.py"):
 
 app = Flask(__name__)
 
-cloudinary.config.update = ({
-    'cloudinary_name': os.environ.get('CLOUDINARY_NAME'),
-    'api_key': os.environ.get('CLOUDINARY_API_KEY'),
-    'api_secret': os.environ.get('CLOUDINARY_API_SECRET')
-})
+cloudinary.config(
+    cloud_name=os.environ.get('CLOUDINARY_NAME'),
+    api_key=os.environ.get('CLOUDINARY_API_KEY'),
+    api_secret=os.environ.get('CLOUDINARY_API_SECRET')
+)
 
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
-
-
 app.secret_key = os.environ.get("SECRET_KEY")
 
 
@@ -54,13 +52,17 @@ def register():
         if existing_user:
             flash("Username already exists")
             return redirect(url_for("register"))
+        
+        photo = request.files['photo_url']
+        photo_upload = cloudinary.uploader.upload(photo, upload_preset="n0wdtp5o")
 
         register = {
             "firstname": request.form.get("firstname").lower(),
             "lastname": request.form.get("lastname").lower(),
             "username": request.form.get("username").lower(),
             "email": request.form.get("email").lower(),
-            "password": generate_password_hash(request.form.get("password"))
+            "password": generate_password_hash(request.form.get("password")),
+            "photo_url": photo_upload['secure_url']
         }
         mongo.db.users.insert_one(register)
 
@@ -108,8 +110,11 @@ def profile(username):
 
     show_user_posts = mongo.db.posts.find({"created_by": username}).sort("_id", -1).limit(3)
 
+    profile_url = mongo.db.users.find_one({"username": username})["photo_url"]
+
     if session["user"]:
-        return render_template("profile.html", username=username, posts=show_user_posts)
+        
+        return render_template("profile.html", username=username, posts=show_user_posts, profile_url=profile_url)
 
     return redirect(url_for("login"))
 
@@ -125,30 +130,50 @@ def logout():
 @app.route("/create_post", methods=["GET", "POST"])
 def create_post():
     if request.method == "POST":
+        show_all_posts = mongo.db.posts.find().sort("_id", -1)
+
         now = datetime.now()
-        date_time = now.strftime("%d/%m/%Y")
+        timestamp = datetime.timestamp(now)
+        date_time = datetime.fromtimestamp(timestamp)
+
+        photo = request.files['photo_url']
+
+        to_split = request.form.get("post_title")
+        split = to_split.rsplit()
+        stripped_title = map(str.strip, split) 
+        url_key = ''.join(stripped_title)
+        
+        photo_upload = cloudinary.uploader.upload(photo, upload_preset="n0wdtp5o", public_id=url_key)
+
+        new_photo = f"https://res.cloudinary.com/ivanprojects/image/upload/send-it-images/{url_key}.jpg"
+
         posts = {
             "post_title": request.form.get("post_title"),
-            "post_date": date_time,
+            "post_date": date_time.strftime("%d/%m/%Y"),
+            "edited_on": "",
             "post_preview": request.form.get("post_preview"),
             "post_content": request.form.get("post_content"),
-            "created_by": session["user"]
+            "created_by": session["user"],
+            "photo_url": new_photo
         }
         mongo.db.posts.insert_one(posts)
         flash("Post Successfully Published")
-        return redirect(url_for("get_posts"))
+        return render_template("index.html", new_photo=new_photo, posts=show_all_posts)
     return render_template("create_post.html")
 
 
 @app.route("/edit_post/<post_id>", methods=["GET", "POST"])
 def edit_post(post_id):
     if request.method == "POST":
-        post_date = mongo.db.posts.post_date.find_one()
-        edited_on = datetime.date.today()
+        now = datetime.now()
+        date_time = now.strftime("%d/%m/%Y")
+
+        
+
         edited_data = {
             "post_title": request.form.get("post_title"),
-            "post_date": post_date,
-            "edited_on": edited_on.strftime("%m/%d/%Y"),
+            "post_date": mongo.db.posts.post_date.find_one(),
+            "edited_on": date_time,
             "post_preview": request.form.get("post_preview"),
             "post_content": request.form.get("post_content"),
             "created_by": session["user"]
@@ -188,14 +213,6 @@ def about():
 @app.route("/contact")
 def contact():
     return render_template("contact.html")
-
-def upload():
-    if request.method == "POST":
-        photo = request.files['photo_url']
-        photo_upload = cloudinary.uploader.upload(photo)
-        review = {
-            "photo_url": photo_upload["secure_url"]
-        }
 
 
 @app.route("/your_posts")

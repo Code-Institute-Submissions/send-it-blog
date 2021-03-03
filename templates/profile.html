@@ -1,4 +1,5 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %} 
+{% block content %}
 
 <div class="center-align uk-width-1-1">
     <h1 class="welcome__title">Welcome back, {{ username }}</h1>
@@ -8,9 +9,11 @@
 
     <section class="profile__section uk-flex uk-flex-column uk-width-1-2 uk-align-center">
         <div class="profile-image-div uk-transition-toggle uk-inline tabindex='0' uk-align-center">
-            <img data-src="/static/images/blog-images/jazmine.jpg" class="profile__image" alt="Profile picture of user" uk-img/>
-            <div class="uk-overlay uk-overlay-primary uk-position-bottom uk-transition-slide-bottom-small image__overlay uk-align-center uk-flex-middle">
-                <a href="#image-modal" class="uk-button uk-button-default uk-position-center upload__icon" uk-icon="icon: upload; ratio: 2" uk-toggle></a>
+            <img data-src="{{ profile_url }}" class="profile__image" alt="Profile picture of user" uk-img/>
+        </div>
+        <div class="uk-align-center uk-flex-column">
+            <div>
+                <a href="#image-modal" class=" uk-align-center uk-button uk-button-default upload__icon" uk-icon="icon: upload; ratio: 2" uk-toggle></a>
                 <div id="image-modal" class="uk-flex-top" uk-modal>
                     <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
                         <button class="uk-modal-close-default" type="button" uk-close></button>
@@ -19,7 +22,7 @@
                         </div>
                         <div class="uk-modal-body">
                             <form method="post" enctype="multipart/form-data">
-                                <input type="file" accept="image/*" name="photo_url" id="phtot_url">
+                                <input type="file" accept="image/*" name="photo_url" id="photo_url">
                                 <input class="file-path validate" type="text">
                                 <input type="submit" value="Upload Files" name="submit">
                             </form>
@@ -31,8 +34,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="uk-align-center uk-flex">
             <button class="create__btn uk-text-middle uk-flex-middle uk-button uk-margin-small uk-border-rounded uk-button-secondary"><a href="{{ url_for('create_post') }}" class="link">CREATE</a></button>
         </div>
     </section>

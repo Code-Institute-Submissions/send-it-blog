@@ -233,3 +233,9 @@ body {
     font-size: 3rem;
     font-weight: 900;
 }
+
+.post__title {
+    font-family: 'Philosopher', Courier, monospace;
+    font-size: 3rem;
+    font-weight: 900;
+}

@@ -6,7 +6,7 @@
         <h3>Create Post</h3>
     </div>
     <div>
-        <form method="POST" action="{{ url_for('create_post' )}}">
+        <form method="POST" action="{{ url_for('create_post' )}}" enctype="multipart/form-data">
             <fieldset class="uk-fieldset">
                 <!-- form title -->
                 <legend class="uk-legend">New Post</legend>
@@ -31,11 +31,11 @@
                     required></textarea>
                 </div>
 
-                <div class="js-upload" uk-form-custom>
-                    <input type="file" multiple>
-                    <button class="uk-button uk-button-default" type="button" tabindex="-1">Upload Image</button>
+                <div class="uk-align-center">
+                    <input type="file" accept="image/*" name="photo_url" id="photo_url">
+                    <input type="submit" value="Upload Files" name="submit">
                 </div>
-
+                        
                 <!-- submit button -->
                 <button class="uk-button uk-button-secondary">Publish!</button>
             </fieldset>
