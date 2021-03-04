@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="uk-flex-column center-align uk-width-1-2" uk-grid>
+<div class="uk-flex-column center-align uk-width-1-1" uk-grid>
     <div>
-        <h3>Create Post</h3>
+        <h3 class="create-post__header">Create Post</h3>
     </div>
     <div>
-        <form method="POST" action="{{ url_for('create_post' )}}" enctype="multipart/form-data">
+        <form class="create-post__form" method="POST" action="{{ url_for('create_post' )}}" enctype="multipart/form-data">
             <fieldset class="uk-fieldset">
                 <!-- form title -->
                 <legend class="uk-legend">New Post</legend>
@@ -35,8 +35,8 @@
                     <input type="file" accept="image/*" name="photo_url" 
                     id="photo_url">
                     <!-- submit button -->
-                    <input class="uk-button uk-button-secondary" type="submit" 
-                    value="Upload Files" name="submit">
+                    <input class="uk-button uk-button-secondary uk-border-rounded create-post__btn" type="submit" 
+                    value="CREATE !" name="submit">
                 </div>
                         
             </fieldset>
