@@ -1,4 +1,4 @@
-#importing required programs
+# importing required programs
 import os
 from datetime import datetime
 import cloudinary
@@ -23,7 +23,7 @@ cloudinary.config(
     api_secret=os.environ.get('CLOUDINARY_API_SECRET')
 )
 
-#setting up mongo config variables
+# setting up mongo config variables
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
@@ -33,40 +33,45 @@ mongo = PyMongo(app)
 
 
 @app.route("/")
-#index view
+# index view
 @app.route("/get_posts")
 def get_posts():
-    """ getting all posts from db into a variable and rendering the template to show all posts """
+    """getting all posts from db into a variable
+    and rendering the template to show all posts"""
     show_all_posts = list(mongo.db.posts.find().sort("_id", -1))
     return render_template("index.html", posts=show_all_posts)
 
-#search view
+
+# search view
 @app.route("/search", methods=["GET", "POST"])
 def search():
-    """ getting input value from search field into a variable 
+    """ getting input value from search field into a variable
     and putting that through the index in the db then rendering
     the template """
     query = request.form.get("search")
-    show_all_posts = mongo.db.posts.find({"$text": {"$search": query}}).sort("_id", -1)
+    show_all_posts = mongo.db.posts.\
+        find({"$text": {"$search": query}}).sort("_id", -1)
     return render_template("index.html", posts=show_all_posts)
 
-#register view
+
+# register view
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
-        """ check if username already exists in database, if 
+        """ check if username already exists in database, if
         yes than flash the message """
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
         if existing_user:
             flash("Username already exists")
             return redirect(url_for("register"))
-        """ take the photo_url file from the template into 
+        """ take the photo_url file from the template into
         a variable, use that variable with cloudinary
         function to upload """
         photo = request.files['photo_url']
-        photo_upload = cloudinary.uploader.upload(photo, upload_preset="n0wdtp5o")
-        """ take form input as a dictionary and put into 
+        photo_upload = cloudinary.uploader.\
+            upload(photo, upload_preset="n0wdtp5o")
+        """ take form input as a dictionary and put into
         a variable, insert it into db """
         register = {
             "firstname": request.form.get("firstname").lower(),
@@ -84,7 +89,8 @@ def register():
 
     return render_template("register.html")
 
-#login view
+
+# login view
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
@@ -95,7 +101,7 @@ def login():
         if existing_user:
             # ensure hashed password matches users input
             if check_password_hash(
-                existing_user["password"], request.form.get("password")):
+                    existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
                 return redirect(url_for(
                     "profile", username=session["user"]))
@@ -110,27 +116,31 @@ def login():
 
     return render_template("login.html")
 
-#profile view
+
+# profile view
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
-    """ get session users username from database, 
+    """ get session users username from database,
     find in the db 3 newest posts from the user """
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
 
-    show_user_posts = mongo.db.posts.find({"created_by": username}).sort("_id", -1).limit(3)
+    show_user_posts = mongo.db.posts.\
+        find({"created_by": username}).sort("_id", -1).limit(3)
 
     """ taking the users profile pic link from the db to be
     used in the template """
     profile_pic = mongo.db.users.find_one({"username": username})["photo_url"]
 
     if session["user"]:
-        
-        return render_template("profile.html", username=username, posts=show_user_posts, profile_pic=profile_pic)
+        return render_template("profile.html", username=username,
+                               posts=show_user_posts, profile_pic=profile_pic
+                               )
 
     return redirect(url_for("login"))
 
-#logout view
+
+# logout view
 @app.route("/logout")
 def logout():
     # remove user from session cookies
@@ -138,27 +148,31 @@ def logout():
     session.pop("user")
     return redirect(url_for("login"))
 
-#create post view
+
+# create post view
 @app.route("/create_post", methods=["GET", "POST"])
 def create_post():
     if request.method == "POST":
-        """ get session users username & profile 
+        """ get session users username & profile
         pic url from database """
         username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
-        profile_pic = mongo.db.users.find_one({"username": username})["photo_url"]
+            {"username": session["user"]})["username"]
+
+        profile_pic = mongo.db.users.find_one(
+            {"username": username})["photo_url"]
         show_all_posts = mongo.db.posts.find().sort("_id", -1)
-        """ save the current time as a timestamp in 
+        """ save the current time as a timestamp in
         a variable """
         now = datetime.now()
         timestamp = datetime.timestamp(now)
         date_time = datetime.fromtimestamp(timestamp)
-        """ take the photo_url file from the template into 
+        """ take the photo_url file from the template into
         a variable, use that variable with cloudinary
         function to upload """
         photo = request.files['photo_url']
-        photo_upload = cloudinary.uploader.upload(photo, upload_preset="n0wdtp5o")
-        """ take form input as a dictionary and put into 
+        photo_upload = cloudinary.uploader.upload(
+            photo, upload_preset="n0wdtp5o")
+        """ take form input as a dictionary and put into
         a variable, insert it into db """
         posts = {
             "post_title": request.form.get("post_title"),
@@ -175,7 +189,9 @@ def create_post():
         return render_template("index.html", posts=show_all_posts)
     return render_template("create_post.html")
 
-#edit post view
+# edit post view
+
+
 @app.route("/edit_post/<post_id>", methods=["GET", "POST"])
 def edit_post(post_id):
     if request.method == "POST":
@@ -196,15 +212,17 @@ def edit_post(post_id):
         mongo.db.posts.update({"_id": ObjectId(post_id)}, edited_data)
         flash("Post Successfully Edited")
         return render_template("index.html", posts=show_all_posts)
-    
+
     post = mongo.db.posts.find_one({"_id": ObjectId(post_id)})
     return render_template("edit_post.html", post=post)
 
-#delete post view
+# delete post view
+
+
 @app.route("/delete_post/<post_id>")
 def delete_post(post_id):
     rule = request.url_rule
-    #find post by id and remove from db
+    # find post by id and remove from db
     mongo.db.posts.remove({"_id": ObjectId(post_id)})
     flash("Post Successfully Deleted")
 
@@ -213,7 +231,9 @@ def delete_post(post_id):
 
     return redirect(url_for("get_posts"))
 
-#get post view
+# get post view
+
+
 @app.route("/get_post/<post_id>")
 def get_post(post_id):
     """ find specific post that has been clicked
@@ -221,44 +241,62 @@ def get_post(post_id):
     post = mongo.db.posts.find_one({"_id": ObjectId(post_id)})
     return render_template("get_post.html", post=post)
 
-#about page view
+# about page view
+
+
 @app.route("/about")
 def about():
-    #go to about template
+    # go to about template
     return render_template("about.html")
 
-#contact page view
+# contact page view
+
+
 @app.route("/contact")
 def contact():
-    #go to contact template
+    # go to contact template
     return render_template("contact.html")
 
-#your posts view
+# your posts view
+
+
 @app.route("/your_posts")
 def your_posts():
+    """ get session users username from database,
+    find in the db all posts created the user """
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
 
-    show_user_posts = mongo.db.posts.find({"created_by": username}).sort("_id", -1)
+    show_user_posts = mongo.db.posts.find(
+        {"created_by": username}).sort("_id", -1)
     return render_template("your_posts.html", posts=show_user_posts)
 
-#uploader view
+# uploader view
+
+
 @app.route("/uploader", methods=["GET", "POST"])
 def uploader():
     if request.method == "POST":
+        """ get session users username from database,
+        use cloudinary function to upload local image
+        return to users profile page """
         username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
+            {"username": session["user"]})["username"]
 
         photo = request.files['photo_url']
-        
-        photo_upload = cloudinary.uploader.upload(photo, upload_preset="n0wdtp5o")
+
+        photo_upload = cloudinary.uploader.upload(
+            photo, upload_preset="n0wdtp5o")
 
         photo_url = photo_upload.get("secure_url")
 
-        return render_template("profile.html", username=username, photo_url=photo_url)
+        return render_template("profile.html",
+                               username=username, photo_url=photo_url
+                               )
     return render_template("upload_image.html")
 
-#setting up server
+
+# setting up server
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
