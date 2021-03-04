@@ -32,7 +32,9 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/get_posts")
 def get_posts():
-    show_all_posts = mongo.db.posts.find().sort("_id", -1)
+    show_all_posts = list(mongo.db.posts.find().sort("_id", -1))
+    print(show_all_posts)
+    
     return render_template("index.html", posts=show_all_posts)
 
 
@@ -53,12 +55,16 @@ def register():
             flash("Username already exists")
             return redirect(url_for("register"))
 
+        photo = request.files['photo_url']
+        photo_upload = cloudinary.uploader.upload(photo, upload_preset="n0wdtp5o")
+
         register = {
             "firstname": request.form.get("firstname").lower(),
             "lastname": request.form.get("lastname").lower(),
             "username": request.form.get("username").lower(),
             "email": request.form.get("email").lower(),
-            "password": generate_password_hash(request.form.get("password"))
+            "password": generate_password_hash(request.form.get("password")),
+            "photo_url": photo_upload.get("secure_url")
         }
         mongo.db.users.insert_one(register)
 
@@ -106,9 +112,12 @@ def profile(username):
 
     show_user_posts = mongo.db.posts.find({"created_by": username}).sort("_id", -1).limit(3)
 
+
+    profile_pic = mongo.db.users.find_one({"username": username})["photo_url"]
+
     if session["user"]:
         
-        return render_template("profile.html", username=username, posts=show_user_posts)
+        return render_template("profile.html", username=username, posts=show_user_posts, profile_pic=profile_pic)
 
     return redirect(url_for("login"))
 
@@ -124,6 +133,11 @@ def logout():
 @app.route("/create_post", methods=["GET", "POST"])
 def create_post():
     if request.method == "POST":
+        username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+
+        profile_pic = mongo.db.users.find_one({"username": username})["photo_url"]
+
         show_all_posts = mongo.db.posts.find().sort("_id", -1)
 
         now = datetime.now()
@@ -131,20 +145,8 @@ def create_post():
         date_time = datetime.fromtimestamp(timestamp)
 
         photo = request.files['photo_url']
-
-        to_split = request.form.get("post_title")
-        split = to_split.rsplit()
-        stripped_title = map(str.strip, split) 
-        url_key = ''.join(stripped_title)
         
-        photo_upload = cloudinary.uploader.upload(photo, upload_preset="n0wdtp5o", public_id=url_key)
-
-        print(photo_upload.get("secure_url"))
-        print(url_key)
-
-        public_id = photo_upload.get("public_id")
-
-        new_photo = f"https://res.cloudinary.com/ivanprojects/image/upload/{public_id}.jpg"
+        photo_upload = cloudinary.uploader.upload(photo, upload_preset="n0wdtp5o")
 
         posts = {
             "post_title": request.form.get("post_title"),
@@ -153,11 +155,12 @@ def create_post():
             "post_preview": request.form.get("post_preview"),
             "post_content": request.form.get("post_content"),
             "created_by": session["user"],
-            "photo_url": new_photo
+            "photo_url": photo_upload.get("secure_url"),
+            "profile_url": profile_pic
         }
         mongo.db.posts.insert_one(posts)
         flash("Post Successfully Published")
-        return render_template("index.html", new_photo=new_photo, posts=show_all_posts)
+        return render_template("index.html", posts=show_all_posts)
     return render_template("create_post.html")
 
 
@@ -230,17 +233,12 @@ def uploader():
         {"username": session["user"]})["username"]
 
         photo = request.files['photo_url']
-
-        to_split = username
-        split = to_split.rsplit()
-        name = map(str.strip, split) 
-        url_key = ''.join(name)
         
-        photo_upload = cloudinary.uploader.upload(photo, upload_preset="n0wdtp5o", public_id=url_key)
+        photo_upload = cloudinary.uploader.upload(photo, upload_preset="n0wdtp5o")
 
-        new_photo = f"https://res.cloudinary.com/ivanprojects/image/upload/send-it-images/{url_key}.jpg"
+        photo_url = photo_upload.get("secure_url")
 
-        return render_template("profile.html", username=username, photo_url=new_photo)
+        return render_template("profile.html", username=username, photo_url=photo_url)
     return render_template("upload_image.html")
 
 

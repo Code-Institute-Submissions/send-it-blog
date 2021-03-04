@@ -17,7 +17,7 @@
         <p class="signup-header-text center-align">We would love to have you as part of our team</p>
 
         <!-- form content -->
-        <form class="center-align uk-form-stacked" method="POST" action="{{ url_for('register') }}">
+        <form class="center-align uk-form-stacked" method="POST" action="{{ url_for('register') }}" enctype="multipart/form-data">
 
         <!-- first name -->
             <div class="uk-margin">
@@ -60,7 +60,11 @@
             </div>
         <!-- sign up button -->
         
-        <button class="uk-button uk-border-rounded signup__btn uk-align-center">SIGN UP</button>
+        <input class="choose-file__text" type="file" accept="image/*" name="photo_url" 
+                    id="photo_url">
+                    <!-- submit button -->
+                    <input class="uk-button uk-button-secondary sign-up__btn uk-border-rounded" type="submit" 
+                    value="SIGN UP" name="submit">
 
         </form>
 

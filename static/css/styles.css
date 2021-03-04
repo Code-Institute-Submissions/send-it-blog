@@ -109,6 +109,11 @@ body {
     font-weight: 400;
 }
 
+.creator__img {
+    width: 100px;
+    height: 100px;
+}
+
 /* register template */
 
 .signup__title {
@@ -150,6 +155,15 @@ body {
 
 .login__container {
     height: 100vh;
+}
+
+.choose-file__text {
+    font-family: 'Philosopher', Courier, monospace;
+    color: #000;
+}
+
+.sign-up__btn {
+    margin-top: 15px;
 }
 
 /* profile template */
@@ -225,6 +239,10 @@ body {
     font-family: 'Philosopher', Courier, monospace;
 }
 
+.about-team__text {
+    width: 70vw;
+}
+
 .member__image {
     margin: 0 auto;
     border-radius: 50%;
@@ -238,7 +256,9 @@ body {
 }
 
 .member__description {
-    margin-top: 100px;  
+    margin: 40px auto 0 auto;  
+    width: 30%;
+
 }
 /* contact template */
 
@@ -277,28 +297,48 @@ body {
         font-size: 2rem;
     }
 
-    .post__card {
+        .post__card {
         width: 60vw;
     }
 
-    .member__image {
-    margin: 0 auto;
-    border-radius: 50%;
-    object-fit: cover;
-    width: 150px;
-    height: 150px;
-}
-
-    .contact__form {
-    width: 100%;
-}
-
-    .profile__container {
-        flex-direction: column;
+        .member__image {
+        margin: 0 auto;
+        border-radius: 50%;
+        object-fit: cover;
+        width: 150px;
+        height: 150px;
     }
 
-    .your-posts__content {
-        flex-direction: column;
+        .members__panel {
+            flex-direction: column;
     }
+
+        .member__description {
+            width: 70%;
+    }
+
+        .member__header,
+        .member__text {
+            text-align: center;
+    }
+
+        .contact__form {
+        width: 100%;
+    }
+
+        .profile__container {
+            flex-direction: column;
+    }
+
+        .your-posts__content {
+            flex-direction: column;
+    }
+
+        .creator__img {
+        width: 60px;
+        height: 60px;
+    }
+
+    
     
 }
