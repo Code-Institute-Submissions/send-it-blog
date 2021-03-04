@@ -167,8 +167,12 @@ body {
 }
 
 .login__container {
-    height: 100vh;
     width: 80%;
+}
+
+.form__card {
+    background-color: rgba(255, 255, 255, .4);
+    width: 80%
 }
 
 .choose-file__text {
@@ -487,5 +491,9 @@ body {
     }
     .post__container {
         width: 900px;
+    }
+
+    .form__card {
+        width: 700px;
     }
 }
