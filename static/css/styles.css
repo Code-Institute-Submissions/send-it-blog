@@ -24,7 +24,8 @@ body {
 
 .link:visited,
 .link:hover,
-.link:active {
+.link:active,
+.link:link {
     color: #f6f6f5;
     text-decoration: none;
 }
@@ -425,7 +426,8 @@ body {
     }
 
     .login__container {
-        width: 75%;
+        width: 100%;
+        margin: 0 auto;
     }
 
     .post__title {

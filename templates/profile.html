@@ -2,7 +2,7 @@
 {% block content %}
 
 <div class="center-align uk-width-1-1">
-    <h1 class="welcome__title">Welcome back, {{ username }}</h1>
+    <h1 class="welcome__title">Nice to see you, {{ username }}</h1>
 </div>
 
 <div class="uk-flex profile__container uk-width-1-1" uk-grid>
@@ -15,7 +15,7 @@
             <div>
                 <a href="{{ url_for('uploader') }}" class=" uk-align-center uk-button uk-button-default upload__icon" uk-icon="icon: upload; ratio: 2" uk-toggle></a>
             </div>
-            <button class="create__btn uk-text-middle uk-flex-middle uk-button uk-margin-small uk-border-rounded uk-button-secondary"><a href="{{ url_for('create_post') }}" class="link">CREATE</a></button>
+            <button class="create__btn uk-text-middle uk-flex-middle uk-button uk-margin-small uk-border-rounded uk-button-secondary link"><a href="{{ url_for('create_post') }}" class="link">CREATE</a></button>
         </div>
     </section>
 
@@ -42,7 +42,7 @@
             {% endfor %}
         </div>
         <div class="uk-align-center uk-flex">
-            <button class="your-posts__btn uk-text-middle uk-flex-middle uk-button uk-margin-small uk-border-rounded uk-button-secondary"><a href="{{ url_for('your_posts') }}" class="link">ALL YOUR POSTS</a></button>
+            <button class="your-posts__btn uk-text-middle uk-flex-middle uk-button uk-margin-small uk-border-rounded uk-button-secondary link"><a href="{{ url_for('your_posts') }}" class="link">ALL YOUR POSTS</a></button>
         </div>
     </section>
 </div>
