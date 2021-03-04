@@ -24,19 +24,22 @@
       <nav class="uk-navbar-container uk-margin-medium-bottom navbar" style="z-index: 980;" uk-sticky="show-on-up: true; animation: uk-animation-slide-top; bottom: #bottom" uk-navbar>
         <div class="search__container">
             {% if not self._TemplateReference__context.name == "index.html" %}
-            <a class=" uk-disabled uk-navbar-toggle" href="#modal-full" uk-search-icon uk-toggle></a>
-            {% else %}
-            <a class="uk-navbar-toggle" href="#modal-full" uk-search-icon uk-toggle></a>
-            {% endif %}
-            <div id="modal-full" class="uk-modal-full uk-modal" uk-modal>
-                <div class="uk-modal-dialog uk-flex uk-flex-center uk-flex-middle" uk-height-viewport>
-                    <button class="uk-modal-close-full" type="button" uk-close></button>
-                    <form action="{{ url_for('search') }}" method="POST" class="uk-search uk-search-large">
-                        <input class="uk-search-input uk-text-center" type="search" placeholder="Search" autofocus>
-                    </form>
-                </div>
+            <div class="uk-navbar-item uk-invisible">
+                <form action="{{ url_for('search') }}" method="POST" class="uk-search uk-search-navbar">
+                <span uk-search-icon></span>
+                <input class="uk-search-input uk-text-center" type="search" placeholder="Search" autofocus required>
+                <label for="search"></label>
+                </form>
             </div>
-            
+            {% else %}
+            <div class="uk-navbar-item">
+                <form action="{{ url_for('search') }}" method="POST" class="uk-search uk-search-navbar">
+                <button type="submit" uk-search-icon></button>
+                <input class="uk-search-input uk-text-left" name="search" id="search" type="text" placeholder="Search" required>
+                <label for="search"></label>
+                </form>
+            </div>
+            {% endif %}
         </div>
         
         <a class="uk-navbar-item uk-navbar-center uk-logo logo link" href="{{ url_for('get_posts') }}">SEND IT...</a>  

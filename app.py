@@ -38,9 +38,9 @@ def get_posts():
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
-    query = request.form.get("query")
-    posts = list(mongo.db.posts.find({"$text": {"$search": query}}))
-    return render_template("index.html", posts=posts)
+    query = request.form.get("search")
+    show_all_posts = mongo.db.posts.find({"$text": {"$search": query}}).sort("_id", -1)
+    return render_template("index.html", posts=show_all_posts)
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -229,7 +229,7 @@ def uploader():
         username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
 
-        show_user_posts = mongo.db.posts.find({"created_by": username}).sort("_id", -1).limit(3)
+        
 
         profile_url = mongo.db.users.find({"username": username}, { "photo_url"}, {_id:0})
 
@@ -249,7 +249,7 @@ def uploader():
 
         mongo.db.users.update_one({"username": username}, {"$set": { "photo_url": new_photo }})
 
-        return render_template("profile.html", username=username, posts=show_user_posts, photo_url=new_photo, profile_url=profile_url)
+        return render_template("profile.html", username=username, photo_url=new_photo, profile_url=profile_url)
     
     return render_template("upload_image.html")
 
