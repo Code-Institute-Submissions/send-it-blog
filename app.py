@@ -229,13 +229,6 @@ def uploader():
         username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
 
-        
-
-        profile_url = mongo.db.users.find({"username": username}, { "photo_url"}, {_id:0})
-
-        print(f"url_key: {show_user_posts}")
-        print(f"url_key: {profile_url}")
-
         photo = request.files['photo_url']
 
         to_split = username
@@ -247,10 +240,7 @@ def uploader():
 
         new_photo = f"https://res.cloudinary.com/ivanprojects/image/upload/send-it-images/{url_key}.jpg"
 
-        mongo.db.users.update_one({"username": username}, {"$set": { "photo_url": new_photo }})
-
-        return render_template("profile.html", username=username, photo_url=new_photo, profile_url=profile_url)
-    
+        return render_template("profile.html", username=username, photo_url=new_photo)
     return render_template("upload_image.html")
 
 

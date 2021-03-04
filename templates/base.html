@@ -33,11 +33,20 @@
             </div>
             {% else %}
             <div class="uk-navbar-item">
-                <form action="{{ url_for('search') }}" method="POST" class="uk-search uk-search-navbar">
-                <button type="submit" uk-search-icon></button>
-                <input class="uk-search-input uk-text-left" name="search" id="search" type="text" placeholder="Search" required>
-                <label for="search"></label>
-                </form>
+                <a class="uk-navbar-toggle" href="#" uk-search-icon></a>
+                <div class="uk-navbar-dropdown" uk-drop="mode: click; cls-drop: uk-navbar-dropdown; boundary: !nav">
+                    <div class="uk-grid-small uk-flex-middle" uk-grid>
+                        <div class="uk-width-expand">
+                            <form action="{{ url_for('search') }}" method="POST" class="uk-search uk-search-navbar uk-width-1-1">
+                            <input class="uk-search-input search__input" name="search" id="search" type="search" placeholder="Search" autofocus required>
+                            <label for="search"></label>
+                            </form>
+                        </div>
+                        <div class="uk-width-auto">
+                            <a class="uk-navbar-dropdown-close" href="#" uk-close></a>
+                        </div>
+                    </div>
+                </div>
             </div>
             {% endif %}
         </div>

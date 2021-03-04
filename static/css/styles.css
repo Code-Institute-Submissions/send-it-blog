@@ -40,8 +40,9 @@ body {
     margin-left: 30px;
 }
 
-.search__icon {
-    color: #f6f6f5;
+.search__input {
+    font-family: 'Philosopher', Courier, monospace;
+    color: #2d3028;
 }
 
 .logo {
