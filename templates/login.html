@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block styles %} 
-
+<!-- specific css link -->
 <link
       rel="stylesheet"
       href="{{ url_for('static', filename='css/login.css') }}"
@@ -10,7 +10,7 @@
 {% endblock%}
 
 {% block content %}
-
+<!-- login form container -->
 <div class="uk-flex login__container uk-flex-center uk-flex-middle center-align" uk-grid uk-height-viewport="offset-top: true; offset-bottom: 29">
     <div class="uk-flex-center uk-flex-middle uk-card uk-card-default uk-card-body uk-align-center uk-border-rounded form__card">
         <!-- form header -->
@@ -36,6 +36,7 @@
         <!-- log in button -->
             <button class="uk-button uk-border-rounded signup__btn">LOG IN</button>
         </form>
+        <!-- sign up link -->
         <p class="redirect-signup uk-margin-top center-align">
             Want to join us? <a href="{{ url_for('register') }}" class="signup-text uk-text-italic">Sign Up Here</a>
         </p>

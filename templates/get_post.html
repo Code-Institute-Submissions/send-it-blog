@@ -1,17 +1,18 @@
 {% extends "base.html" %}
 {% block content %}
 
+<!-- container -->
 <div class="uk-flex-column center-align post__container" uk-grid>
     <article class="uk-article">
-
+    <!-- article header -->
     <h1 class="uk-article-title post__title"><a class="uk-link-reset" href="">{{ post.post_title }}</a></h1>
-
+    <!-- article author text -->
     <p class="uk-article-meta created__by">Written by {{ post.created_by }}</p>
-
-    <img data-src="{{ post.photo_url }}" width="750" height="575" alt="Image of SZA" uk-img>
-
+    <!-- article image -->
+    <img data-src="{{ post.photo_url }}" width="750" height="575" alt="Image of Post Subject" uk-img>
+    <!-- article preview text -->
     <p class="uk-text-lead post__preview">{{ post.post_preview }}</p>
-
+    <!-- article content -->
     <p class="post__content">{{ post.post_content }}</p>
 
     

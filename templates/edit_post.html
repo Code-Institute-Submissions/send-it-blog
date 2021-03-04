@@ -1,11 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
-
+<!-- edit post container -->
 <div class="uk-flex-column center-align edit-post__container" uk-grid>
+    <!-- edit post header -->
     <div>
         <h3 class="edit-post__header">Edit Post</h3>
     </div>
     <div>
+        <!-- edit post form content -->
         <form method="POST" action="{{ url_for('edit_post', post_id=post._id) }}" enctype="multipart/form-data">
             <fieldset class="uk-fieldset">
                 <!-- post title input -->

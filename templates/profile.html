@@ -1,16 +1,18 @@
 {% extends "base.html" %} 
 {% block content %}
-
+<!-- profile page welcome text -->
 <div class="center-align uk-width-1-1">
     <h1 class="welcome__title">Nice to see you, {{ username }}</h1>
 </div>
-
+<!-- profile page container -->
 <div class="uk-flex profile__container uk-width-1-1" uk-grid>
-
+    <!-- user image & create section container -->
     <section class="profile__section uk-flex uk-flex-column uk-width-1-2 uk-align-center">
+        <!-- user image container -->
         <div class="profile-image-div uk-transition-toggle uk-inline tabindex='0' uk-align-center">
             <img data-src="{{ profile_pic }}" class="profile__image uk-align-center uk-border-circle" alt="Profile picture of user" uk-img/>
         </div>
+        <!-- upload new profile image & create new post links -->
         <div class="uk-align-center uk-flex-column">
             <div>
                 <a href="{{ url_for('uploader') }}" class=" uk-align-center uk-button uk-button-default upload__icon" uk-icon="icon: upload; ratio: 2" uk-toggle></a>
@@ -18,29 +20,35 @@
             <button class="create__btn uk-text-middle uk-flex-middle uk-button uk-margin-small uk-border-rounded uk-button-secondary link"><a href="{{ url_for('create_post') }}" class="link">CREATE</a></button>
         </div>
     </section>
-
+    <!-- preview user posts section -->
     <section class="uk-width-1-2 uk-flex uk-flex-column uk-align-center your-posts__section">
+        <!-- preview user posts section header -->
         <h2 class="your-posts__title center-align">Your Posts</h2>
         <div class="your-posts__content uk-flex center-align">
             {% for post in posts %}
+            <!-- your posts content card -->
             <div class="uk-card uk-card-default uk-margin-auto uk-flex-center uk-flex-row uk-width-1-4@s your-posts__card center-align">
                 <div class="uk-card-header">
                     <div class="uk-grid-small uk-flex-middle" uk-grid>
+                        <!-- post title & date container -->
                         <div class="uk-width-auto card-title__container">
                             <h3 class="uk-card-title uk-margin-remove-bottom preview__title center-align">{{ post.post_title }}</h3>
                             <p class="uk-text-meta uk-margin-remove-top center-align">{{ post.post_date }}</p>
                         </div>
                     </div>
                 </div>
+                <!-- post image -->
                 <div class="uk-card-body preview__image">
-                    <img src="{{ post.photo_url }}">
+                    <img src="{{ post.photo_url }}" alt="Image of Post Subject">
                 </div>
+                <!-- link to read full post -->
                 <div class="uk-card-footer">
                     <a href="{{ url_for('get_post', post_id=post._id) }}" class="uk-button uk-button-text">Read more</a>
                 </div>
             </div>
             {% endfor %}
         </div>
+        <!-- link to see all user posts -->
         <div class="uk-align-center uk-flex">
             <button class="your-posts__btn uk-text-middle uk-flex-middle uk-button uk-margin-small uk-border-rounded uk-button-secondary link"><a href="{{ url_for('your_posts') }}" class="link">ALL YOUR POSTS</a></button>
         </div>

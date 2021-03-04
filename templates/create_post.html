@@ -1,10 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
-
+<!-- create post container -->
 <div class="uk-flex-column center-align uk-width-1-1" uk-grid>
+    <!-- create post header -->
     <div>
         <h3 class="create-post__header">Create Post</h3>
     </div>
+    <!-- create post form -->
     <div>
         <form class="create-post__form" method="POST" action="{{ url_for('create_post' )}}" enctype="multipart/form-data">
             <fieldset class="uk-fieldset">
@@ -30,8 +32,9 @@
                     placeholder="Post Content"
                     required></textarea>
                 </div>
-
+                
                 <div class="uk-align-center">
+                    <!-- image upload section -->
                     <input type="file" accept="image/*" name="photo_url" 
                     id="photo_url">
                     <!-- submit button -->

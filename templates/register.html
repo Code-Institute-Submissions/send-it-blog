@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block styles %} 
-
+<!-- specific css link -->
 <link
       rel="stylesheet"
       href="{{ url_for('static', filename='css/login.css') }}"
@@ -9,7 +9,7 @@
 {% endblock%}
 
 {% block content %}
-
+<!-- register form container -->
 <div class="uk-flex register__container" uk-grid>
     <div class="uk-flex-center uk-flex-middle uk-card uk-card-default uk-card-body uk-align-center uk-border-rounded form__card">
         <!-- form header -->
@@ -58,13 +58,13 @@
                     <label for="password"></label>
                 </div>
             </div>
-        <!-- sign up button -->
+        <!-- photo upload input -->
             <input class="choose-file__text" type="file" accept="image/*" name="photo_url" id="photo_url">
             <!-- submit button -->
             <input class="uk-button uk-button-secondary sign-up__btn uk-border-rounded" type="submit" 
             value="SIGN UP" name="submit">
         </form>
-
+        <!-- login link -->
         <p class="redirect-login uk-margin-top center-align">
             Already Registered? <a href="{{ url_for('login') }}" class="login-text uk-text-italic">Log In Here</a>
         </p>
