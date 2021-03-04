@@ -1,15 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="uk-flex-column center-align uk-width-1-2" uk-grid>
+<div class="uk-flex-column center-align edit-post__container" uk-grid>
     <div>
-        <h3>Edit Post</h3>
+        <h3 class="edit-post__header">Edit Post</h3>
     </div>
     <div>
         <form method="POST" action="{{ url_for('edit_post', post_id=post._id) }}" enctype="multipart/form-data">
             <fieldset class="uk-fieldset">
-                <!-- form title -->
-                <legend class="uk-legend">New Post</legend>
                 <!-- post title input -->
                 <div class="uk-margin">
                     <label for="post_title">Post Title</label>
@@ -25,16 +23,16 @@
                     <label for="post_content">Post Content</label>
                     <textarea
                     class="uk-textarea"
-                    rows="5"
+                    rows="15"
                     name="post_content" id="post_content"
                     placeholder="Post Content"
                     required>{{- post.post_content -}}</textarea>
                 </div>
 
                 <!-- Cancel button -->
-                <a href="{{ url_for('get_posts') }}" class="uk-button uk-button-danger">Cancel Edit</a>
+                <a href="{{ url_for('get_posts') }}" class="uk-button uk-button-danger uk-border-rounded">Cancel Edit</a>
                 <!-- Edit button -->
-                <button class="uk-button uk-button-secondary">Edit Post!</button>
+                <button class="uk-button uk-button-secondary uk-border-rounded uk-margin">Edit Post!</button>
             </fieldset>
         </form>
     </div>

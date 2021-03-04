@@ -23,12 +23,12 @@
         <h2 class="your-posts__title center-align">Your Posts</h2>
         <div class="your-posts__content uk-flex center-align">
             {% for post in posts %}
-            <div class="uk-card uk-card-default uk-margin-auto uk-flex-center uk-flex-row uk-width-1-4@s">
+            <div class="uk-card uk-card-default uk-margin-auto uk-flex-center uk-flex-row uk-width-1-4@s your-posts__card center-align">
                 <div class="uk-card-header">
                     <div class="uk-grid-small uk-flex-middle" uk-grid>
-                        <div class="uk-width-auto">
-                            <h3 class="uk-card-title uk-margin-remove-bottom preview__title">{{ post.post_title }}</h3>
-                            <p class="uk-text-meta uk-margin-remove-top">{{ post.post_date }}</p>
+                        <div class="uk-width-auto card-title__container">
+                            <h3 class="uk-card-title uk-margin-remove-bottom preview__title center-align">{{ post.post_title }}</h3>
+                            <p class="uk-text-meta uk-margin-remove-top center-align">{{ post.post_date }}</p>
                         </div>
                     </div>
                 </div>

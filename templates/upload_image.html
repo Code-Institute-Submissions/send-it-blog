@@ -1,14 +1,19 @@
 {% extends "base.html" %} 
+
 {% block content %}
 
-<h1>Image Uploader</h1>
+<div class="upload__container uk-flex uk-width-1-2 uk-flex-center uk-flex-middle uk-height-1-1 uk-flex-column" uk-height-viewport="offset-top: true; offset-bottom: 30">
+    
+    <h1 class="uploader__header center-align">Image Uploader</h1>
 
-<div class="upload__container">
-    <form method="POST" action="{{ url_for('uploader' )}}" enctype="multipart/form-data">
-        <input type="file" accept="image/*" name="photo_url" id="photo_url">
-        <input type="submit" value="Upload Files" name="submit">
-    </form>
+    <div class="uploader-form__container">
+        <form class="uploader__form uk-align-center" method="POST" action="{{ url_for('uploader' )}}" enctype="multipart/form-data">
+            <input class="uploader-form__input" type="file" accept="image/*" name="photo_url" id="photo_url">
+            <input class="uk-align-center uk-button uk-button-secondary uk-border-rounded uk-margin" type="submit" value="Upload File" name="submit">
+        </form>
+    </div>
 </div>
+
                         
 
 {% endblock %}
