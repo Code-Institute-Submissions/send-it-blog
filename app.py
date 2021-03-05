@@ -189,17 +189,28 @@ def create_post():
         return render_template("index.html", posts=show_all_posts)
     return render_template("create_post.html")
 
+
 # edit post view
-
-
 @app.route("/edit_post/<post_id>", methods=["GET", "POST"])
 def edit_post(post_id):
     if request.method == "POST":
+        """ get session users username & profile
+        pic url from database """
+        username = mongo.db.users.find_one(
+            {"username": session["user"]})["username"]
+        profile_pic = mongo.db.users.find_one(
+            {"username": username})["photo_url"]
         show_all_posts = mongo.db.posts.find().sort("_id", -1)
         """ take save a formatted version of the date
         in a variable """
         now = datetime.now()
         date_time = now.strftime("%d/%m/%Y")
+        """ take the photo_url file from the template into
+        a variable, use that variable with cloudinary
+        function to upload """
+        photo = request.files['photo_url']
+        photo_upload = cloudinary.uploader.upload(
+            photo, upload_preset="n0wdtp5o")
         """ insert edited data from form into db """
         edited_data = {
             "post_title": request.form.get("post_title"),
@@ -208,6 +219,8 @@ def edit_post(post_id):
             "post_preview": request.form.get("post_preview"),
             "post_content": request.form.get("post_content"),
             "created_by": session["user"],
+            "photo_url": photo_upload.get("secure_url"),
+            "profile_url": profile_pic
         }
         mongo.db.posts.update({"_id": ObjectId(post_id)}, edited_data)
         flash("Post Successfully Edited")
@@ -216,9 +229,8 @@ def edit_post(post_id):
     post = mongo.db.posts.find_one({"_id": ObjectId(post_id)})
     return render_template("edit_post.html", post=post)
 
+
 # delete post view
-
-
 @app.route("/delete_post/<post_id>")
 def delete_post(post_id):
     rule = request.url_rule
@@ -231,9 +243,8 @@ def delete_post(post_id):
 
     return redirect(url_for("get_posts"))
 
+
 # get post view
-
-
 @app.route("/get_post/<post_id>")
 def get_post(post_id):
     """ find specific post that has been clicked
@@ -241,25 +252,22 @@ def get_post(post_id):
     post = mongo.db.posts.find_one({"_id": ObjectId(post_id)})
     return render_template("get_post.html", post=post)
 
+
 # about page view
-
-
 @app.route("/about")
 def about():
     # go to about template
     return render_template("about.html")
 
+
 # contact page view
-
-
 @app.route("/contact")
 def contact():
     # go to contact template
     return render_template("contact.html")
 
+
 # your posts view
-
-
 @app.route("/your_posts")
 def your_posts():
     """ get session users username from database,
@@ -271,9 +279,8 @@ def your_posts():
         {"created_by": username}).sort("_id", -1)
     return render_template("your_posts.html", posts=show_user_posts)
 
+
 # uploader view
-
-
 @app.route("/uploader", methods=["GET", "POST"])
 def uploader():
     if request.method == "POST":
@@ -294,6 +301,12 @@ def uploader():
                                username=username, photo_url=photo_url
                                )
     return render_template("upload_image.html")
+
+
+# hero post view
+@app.route("/hero_post")
+def hero_post():
+    return render_template("hero_post.html")
 
 
 # setting up server

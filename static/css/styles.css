@@ -88,12 +88,24 @@ body {
     margin-top: 6rem;
 }
 
+.footer__text {
+    color: #fff;
+}
+
 /* index template */
 
 .hero__text {
     font-size: 5.3vw;
     font-weight: 800;
     font-family: 'Roboto Slab', Courier, monospace;
+}
+
+.hero__link:visited,
+.hero__link:hover,
+.hero__link:active,
+.hero__link:link {
+    color:#2e3029;
+    text-decoration: none;
 }
 
 .main__content {
@@ -312,7 +324,7 @@ body {
 }
 
 .contact__form {
-    width: 70%;
+    width: 100%;
     margin: 0 auto;
 }
 

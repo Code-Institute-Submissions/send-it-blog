@@ -30,7 +30,12 @@
                     placeholder="Post Content"
                     required>{{- post.post_content -}}</textarea>
                 </div>
-
+                <!-- image upload section -->
+                <div class="uk-align-center">
+                    <!-- image upload section -->
+                    <input type="file" accept="image/*" name="photo_url" 
+                    id="photo_url">
+                </div>
                 <!-- Cancel button -->
                 <a href="{{ url_for('get_posts') }}" class="uk-button uk-button-danger uk-border-rounded">Cancel Edit</a>
                 <!-- Edit button -->
