@@ -1,76 +1,129 @@
-{% extends "base.html" %}
-{% block styles %} 
+{% extends "base.html" %} {% block styles %}
 <!-- specific css link -->
 <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/login.css') }}"
-    />
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/login.css') }}"
+/>
 
-{% endblock%}
-
-{% block content %}
+{% endblock%} {% block content %}
 <!-- register form container -->
 <div class="uk-flex register__container" uk-grid>
-    <div class="uk-flex-center uk-flex-middle uk-card uk-card-default uk-card-body uk-align-center uk-border-rounded form__card">
-        <!-- form header -->
-        <h3 class="uk-card-title center-align signup__title">JOIN US!</h3>
-        <p class="signup-header-text center-align">We would love to have you as part of our team</p>
+  <div
+    class="uk-flex-center uk-flex-middle uk-card uk-card-default uk-card-body uk-align-center uk-border-rounded form__card"
+  >
+    <!-- form header -->
+    <h3 class="uk-card-title center-align signup__title">JOIN US!</h3>
+    <p class="signup-header-text center-align">
+      We would love to have you as part of our team
+    </p>
 
-        <!-- form content -->
-        <form class="center-align uk-form-stacked" method="POST" action="{{ url_for('register') }}" enctype="multipart/form-data">
-
-        <!-- first name -->
-            <div class="uk-margin">
-                <div class="uk-inline input__text">
-                    <label for="firstname">First Name</label>
-                    <input class="uk-input uk-border-rounded" type="text" id="firstname" name="firstname" placeholder="First Name" required>
-                </div>
-            </div>
-        <!-- last name -->
-            <div class="uk-margin">
-                <div class="uk-inline input__text">
-                    <label for="lastname">Last Name</label>
-                    <input class="uk-input uk-border-rounded" type="text" id="lastname" name="lastname" placeholder="Last Name" required>
-                    <label for="lastname"></label>
-                </div>
-            </div>
-        <!-- username -->
-            <div class="uk-margin">
-                <div class="uk-inline input__text">
-                    <label for="username">Username</label>
-                    <input class="uk-input uk-border-rounded" type="text" id="username" name="username" placeholder="Username" required>
-                    <label for="username"></label>
-                </div>
-            </div>
-        <!-- email -->
-            <div class="uk-margin">
-                <div class="uk-inline input__text">
-                    <label for="email">Email</label>
-                    <input class="uk-input uk-border-rounded" type="email" id="email" name="email" placeholder="Email" required>
-                    <label for="email"></label>
-                </div>
-            </div>
-        <!-- password -->
-            <div class="uk-margin input__text">
-                <div class="uk-inline">
-                    <label for="password">Password</label>
-                    <input class="uk-input uk-border-rounded" minlength="5" maxlength="15" type="password" id="password" name="password" placeholder="Enter A Password" required>
-                    <label for="password"></label>
-                </div>
-            </div>
-        <!-- photo upload input -->
-            <input class="choose-file__text" type="file" accept="image/*" name="photo_url" id="photo_url">
-            <!-- submit button -->
-            <input class="uk-button uk-button-secondary sign-up__btn uk-border-rounded" type="submit" 
-            value="SIGN UP" name="submit">
-        </form>
-        <!-- login link -->
-        <p class="redirect-login uk-margin-top center-align">
-            Already Registered? <a href="{{ url_for('login') }}" class="login-text uk-text-italic">Log In Here</a>
-        </p>
-        
-
-    </div>
+    <!-- form content -->
+    <form
+      class="center-align uk-form-stacked"
+      method="POST"
+      action="{{ url_for('register') }}"
+      enctype="multipart/form-data"
+    >
+      <!-- first name -->
+      <div class="uk-margin">
+        <div class="uk-inline input__text">
+          <label for="firstname">First Name</label>
+          <input
+            class="uk-input uk-border-rounded"
+            type="text"
+            id="firstname"
+            name="firstname"
+            placeholder="First Name"
+            required
+          />
+        </div>
+      </div>
+      <!-- last name -->
+      <div class="uk-margin">
+        <div class="uk-inline input__text">
+          <label for="lastname">Last Name</label>
+          <input
+            class="uk-input uk-border-rounded"
+            type="text"
+            id="lastname"
+            name="lastname"
+            placeholder="Last Name"
+            required
+          />
+          <label for="lastname"></label>
+        </div>
+      </div>
+      <!-- username -->
+      <div class="uk-margin">
+        <div class="uk-inline input__text">
+          <label for="username">Username</label>
+          <input
+            class="uk-input uk-border-rounded"
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Username"
+            required
+          />
+          <label for="username"></label>
+        </div>
+      </div>
+      <!-- email -->
+      <div class="uk-margin">
+        <div class="uk-inline input__text">
+          <label for="email">Email</label>
+          <input
+            class="uk-input uk-border-rounded"
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Email"
+            required
+          />
+          <label for="email"></label>
+        </div>
+      </div>
+      <!-- password -->
+      <div class="uk-margin input__text">
+        <div class="uk-inline">
+          <label for="password">Password</label>
+          <input
+            class="uk-input uk-border-rounded"
+            minlength="5"
+            maxlength="15"
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter A Password"
+            required
+          />
+          <label for="password"></label>
+        </div>
+      </div>
+      <!-- photo upload input -->
+      <input
+        class="choose-file__text"
+        type="file"
+        accept="image/*"
+        name="photo_url"
+        id="photo_url"
+      />
+      <!-- submit button -->
+      <input
+        class="uk-button uk-button-secondary sign-up__btn uk-border-rounded"
+        type="submit"
+        value="SIGN UP"
+        name="submit"
+      />
+    </form>
+    <!-- login link -->
+    <p class="redirect-login uk-margin-top center-align">
+      Already Registered?
+      <a href="{{ url_for('login') }}" class="login-text uk-text-italic"
+        >Log In Here</a
+      >
+    </p>
+  </div>
 </div>
 
 {% endblock %}

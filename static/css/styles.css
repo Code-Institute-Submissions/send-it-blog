@@ -1,511 +1,507 @@
-@import url('https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 /* Utility classes */
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 .center-align {
-    text-align: center;
+  text-align: center;
 }
 
 body {
-    background-color: #f6f6f5;
-    color: #000;
-    font-family: 'Philosopher', Courier, monospace;
-    font-weight: 300;
-    height: 100%;
-    width: 100%
-
+  background-color: #f6f6f5;
+  color: #000;
+  font-family: "Philosopher", Courier, monospace;
+  font-weight: 300;
+  height: 100%;
+  width: 100%;
 }
 
 .link:visited,
 .link:hover,
 .link:active,
 .link:link {
-    color: #f6f6f5;
-    text-decoration: none;
+  color: #f6f6f5;
+  text-decoration: none;
 }
 
 /* base template */
 
 .uk-navbar-container:not(.uk-navbar-transparent) {
-    background-color:#2d3028;
-    color: #f6f6f5;
-    padding: 1vw 0 1vw 0;
+  background-color: #2d3028;
+  color: #f6f6f5;
+  padding: 1vw 0 1vw 0;
 }
 
 .search__container {
-    margin-left: 30px;
+  margin-left: 30px;
 }
 
 .search__input {
-    font-family: 'Philosopher', Courier, monospace;
-    color: #2d3028;
+  font-family: "Philosopher", Courier, monospace;
+  color: #2d3028;
 }
 
 .logo {
-    font-family: 'Philosopher', Courier, monospace;
-    font-size: 5vw;
-    font-weight: 700;
-    color: #f6f6f5;
+  font-family: "Philosopher", Courier, monospace;
+  font-size: 5vw;
+  font-weight: 700;
+  color: #f6f6f5;
 }
 
 #nav__items {
-    color: #f6f6f5;
+  color: #f6f6f5;
 }
 
 .nav__item {
-    font-size: 1.7rem;
-    font-weight: 300;
-} 
+  font-size: 1.7rem;
+  font-weight: 300;
+}
 
 .offcanvas__nav {
-    background-color: #2d3028;
+  background-color: #2d3028;
 }
 
 .tagline {
-    font-family: 'Philosopher', Courier, monospace;
-    font-size: .8rem;
-    font-weight: 200;
+  font-family: "Philosopher", Courier, monospace;
+  font-size: 0.8rem;
+  font-weight: 200;
 }
 
 .social__links {
-    text-align: center;
+  text-align: center;
 }
 
 .social__icon {
-    padding-left: 3px;
-    padding-right: 3px;
+  padding-left: 3px;
+  padding-right: 3px;
 }
 
 .footer {
-    padding: 30px 0 30px 0;
-    background-color: #2e3029;
-    margin-top: 6rem;
+  padding: 30px 0 30px 0;
+  background-color: #2e3029;
+  margin-top: 6rem;
 }
 
 .footer__text {
-    color: #fff;
+  color: #fff;
 }
 
 /* index template */
 
 .hero__text {
-    font-size: 5.3vw;
-    font-weight: 800;
-    font-family: 'Roboto Slab', Courier, monospace;
+  font-size: 5.3vw;
+  font-weight: 800;
+  font-family: "Roboto Slab", Courier, monospace;
 }
 
 .hero__link:visited,
 .hero__link:hover,
 .hero__link:active,
 .hero__link:link {
-    color:#2e3029;
-    text-decoration: none;
+  color: #2e3029;
+  text-decoration: none;
 }
 
 .main__content {
-    background-color: #2e3029;
-    padding: 5rem 5rem;
-    margin-left: 1px
+  background-color: #2e3029;
+  padding: 5rem 5rem;
+  margin-left: 1px;
 }
 
 .created-by__text {
-    font-family: 'Philosopher', Courier, monospace;
-    text-transform: capitalize;
+  font-family: "Philosopher", Courier, monospace;
+  text-transform: capitalize;
 }
 
 .title__text {
-    font-family: 'Roboto Slab', Courier, monospace;
-    font-weight: 400;
+  font-family: "Roboto Slab", Courier, monospace;
+  font-weight: 400;
 }
 
 .creator__img {
-    width: 100px;
-    height: 100px;
+  width: 100px;
+  height: 100px;
 }
 
 /* get post template */
 
 .post__container {
-    width: 70%;
+  width: 70%;
 }
 
 .created__by {
-    text-transform: capitalize;
+  text-transform: capitalize;
 }
 
 /* register template */
 
 .signup__title {
-    font-family: 'Philosopher', Courier, monospace;
-    font-size: 2rem;
-    font-weight: 300;
+  font-family: "Philosopher", Courier, monospace;
+  font-size: 2rem;
+  font-weight: 300;
 }
 
 .signup__btn {
-    background-color: #27fb6b;
-    color: #000;
-    font-weight: 300;
-    font-size: 1.2rem;
+  background-color: #27fb6b;
+  color: #000;
+  font-weight: 300;
+  font-size: 1.2rem;
 }
 
 .flashed-message {
-    line-height: 2;
-    font-family: 'Philosopher', Courier, monospace;
+  line-height: 2;
+  font-family: "Philosopher", Courier, monospace;
+  color: #27fb6b;
 }
 
 .redirect-signup {
-    bottom: 26%;
+  bottom: 26%;
 }
 
 .redirect-login {
-    top: 90%;
+  top: 90%;
 }
 
 .signup-header-text,
 .redirect-signup,
 .signup__title,
 .redirect-login {
-    color: #000;
+  color: #000;
 }
 
 .input__text {
-    color: #000;
+  color: #000;
 }
 
 .login__container {
-    width: 80%;
+  width: 80%;
 }
 
 .form__card {
-    background-color: rgba(255, 255, 255, .4);
-    width: 80%
+  background-color: rgba(255, 255, 255, 0.4);
+  width: 80%;
 }
 
 .choose-file__text {
-    font-family: 'Philosopher', Courier, monospace;
-    color: #000;
-    margin-left: 70px;
+  font-family: "Philosopher", Courier, monospace;
+  color: #000;
+  margin-left: 70px;
 }
 
 .sign-up__btn {
-    margin-top: 15px;
+  margin-top: 15px;
 }
 
 /* profile template */
 
 .welcome__title {
-    font-size: 2.5rem;
-    font-weight: 900;
-    font-family: 'Philosopher', Courier, monospace;
-    text-transform: capitalize;
+  font-size: 2.5rem;
+  font-weight: 900;
+  font-family: "Philosopher", Courier, monospace;
+  text-transform: capitalize;
 }
 
 .profile__image {
-    object-fit: cover;
-    max-width: 300px;
-    margin: 0 auto;
+  object-fit: cover;
+  max-width: 300px;
+  margin: 0 auto;
 }
 
 .image__overlay {
-    border-radius: 50%;
-    width: 300px;
-    height: 300px;
-    margin: 0 auto;
-    
+  border-radius: 50%;
+  width: 300px;
+  height: 300px;
+  margin: 0 auto;
 }
 
 .upload__icon {
-    border: none;
+  border: none;
 }
 
 .profile-image-div {
-    border: none;
+  border: none;
 }
 
 .create__btn {
-    width: 15rem;
-    height: 4rem;
-    font-size: 2rem;
-    font-weight: 900;
-    text-decoration: none;
+  width: 15rem;
+  height: 4rem;
+  font-size: 2rem;
+  font-weight: 900;
+  text-decoration: none;
 }
 
 .card-title__container {
-    margin: 0 auto;
+  margin: 0 auto;
 }
 
 .your-posts__title {
-    font-size: 2.5rem;
-    font-weight: 900;
-    font-family: 'Philosopher', Courier, monospace;
+  font-size: 2.5rem;
+  font-weight: 900;
+  font-family: "Philosopher", Courier, monospace;
 }
 
 .preview__title {
-    font-family: 'Philosopher', Courier, monospace;
-    font-size: 1.5rem;
-    font-weight: 900;
+  font-family: "Philosopher", Courier, monospace;
+  font-size: 1.5rem;
+  font-weight: 900;
 }
 
 .your-posts__btn {
-    width: 15rem;
-    height: 4rem;
-    font-size: 1rem;
-    font-weight: 900;
-    text-decoration: none;
+  width: 15rem;
+  height: 4rem;
+  font-size: 1rem;
+  font-weight: 900;
+  text-decoration: none;
 }
 
 .your-posts__btn:hover {
-    color: #fff;
+  color: #fff;
 }
 
 .preview__image {
-    padding: 0;
+  padding: 0;
 }
 
 /* create post template */
 
 .create-post__header {
-    font-family: 'Roboto Slab', Courier, monospace;
-    font-size: 2.6rem;
-    font-weight: 600;
+  font-family: "Roboto Slab", Courier, monospace;
+  font-size: 2.6rem;
+  font-weight: 600;
 }
 
 .create-post__form {
-    width: 70%;
-    margin: 0 auto;
+  width: 70%;
+  margin: 0 auto;
 }
 
 .create-post__btn {
-    margin-top: 15px;
+  margin-top: 15px;
 }
 
 /* about template */
 
 .our-team__header {
-    font-family: 'Philosopher', Courier, monospace;
+  font-family: "Philosopher", Courier, monospace;
 }
 
 .about-team__text {
-    width: 70vw;
+  width: 70vw;
 }
 
 .member__image {
-    margin: 0 auto;
-    border-radius: 50%;
-    object-fit: cover;
-    width: 200px;
-    height: 200px;
+  margin: 0 auto;
+  border-radius: 50%;
+  object-fit: cover;
+  width: 200px;
+  height: 200px;
 }
 
 .member__header {
-    font-family: 'Roboto Slab', Courier, monospace;
+  font-family: "Roboto Slab", Courier, monospace;
 }
 
 .member__description {
-    margin: 40px auto 0 auto;  
-    width: 30%;
-
+  margin: 40px auto 0 auto;
+  width: 30%;
 }
 /* contact template */
 
 .contact__header {
-    font-family: 'Roboto Slab', Courier, monospace;
-    font-weight: 400;
+  font-family: "Roboto Slab", Courier, monospace;
+  font-weight: 400;
 }
 
 .contact__background {
-    background-color:  #f6f6f5;
+  background-color: #f6f6f5;
 }
 
 .contact__form {
-    width: 100%;
-    margin: 0 auto;
+  width: 100%;
+  margin: 0 auto;
 }
 
 /* your posts template */
 
 .your-posts__header {
-    font-family: 'Roboto Slab', Courier, monospace;
-    font-size: 3rem;
-    font-weight: 600;
-    text-align: center;
+  font-family: "Roboto Slab", Courier, monospace;
+  font-size: 3rem;
+  font-weight: 600;
+  text-align: center;
 }
 
 .post__title {
-    font-family: 'Philosopher', Courier, monospace;
-    font-size: 3rem;
-    font-weight: 900;
+  font-family: "Philosopher", Courier, monospace;
+  font-size: 3rem;
+  font-weight: 900;
 }
 
 /* uploader template */
 
 .upload__container {
-    width: 100vw;
-    height: 100%;
+  width: 100vw;
+  height: 100%;
 }
 
 .uploader__header {
-    font-family: 'Roboto Slab', Courier, monospace;
-    font-size: 3rem;
-    font-weight: 600;
+  font-family: "Roboto Slab", Courier, monospace;
+  font-size: 3rem;
+  font-weight: 600;
 }
 
 .uploader-form__input {
-    margin: 0 auto 30px 70px;
+  margin: 0 auto 30px 70px;
 }
 
 /* edit post template */
 
 .edit-post__container {
-    width: 70%;
+  width: 70%;
 }
 
 .edit-post__header {
-    font-family: 'Roboto Slab', Courier, monospace;
-    font-size: 2.6rem;
-    font-weight: 600;
+  font-family: "Roboto Slab", Courier, monospace;
+  font-size: 2.6rem;
+  font-weight: 600;
 }
 
 /* media queries */
 
 @media only screen and (max-width: 576px) {
-    .logo {
-        font-size: 2rem;
-    }
-
-    .post__card {
-        width: 60vw;
-    }
-
-    .member__image {
-        margin: 0 auto;
-        border-radius: 50%;
-        object-fit: cover;
-        width: 150px;
-        height: 150px;
-    }
-
-    .members__panel {
-        flex-direction: column;
-    }
-
-    .member__description {
-        width: 70%;
-    }
-
-    .member__header,
-    .member__text {
-        text-align: center;
-    }
-
-    .contact__form {
-        width: 100%;
-    }
-
-    .profile__container {
-        flex-direction: column;
-    }
-
-    .profile__section {
-        margin: 0 0 50px 0;
-        width: 100%;
-    }
-
-    .your-posts__title {
-        font-size: 3rem;
-        font-weight: 900;
-        font-family: 'Philosopher', Courier, monospace;
-    }
-
-    .your-posts__section {
-        width: 80%;
-    }
-
-    .your-posts__content {
-        flex-direction: column;
-    }
-
-    .your-posts__card {
-        margin-top: 15px;
-        margin-bottom: 15px;
-    }
-
-    .creator__img {
-        width: 60px;
-        height: 60px;
-    }
-
-    .login__container {
-        width: 100%;
-        margin: 0 auto;
-    }
-
-    .post__title {
+  .logo {
     font-size: 2rem;
-}
-    
+  }
+
+  .post__card {
+    width: 60vw;
+  }
+
+  .member__image {
+    margin: 0 auto;
+    border-radius: 50%;
+    object-fit: cover;
+    width: 150px;
+    height: 150px;
+  }
+
+  .members__panel {
+    flex-direction: column;
+  }
+
+  .member__description {
+    width: 70%;
+  }
+
+  .member__header,
+  .member__text {
+    text-align: center;
+  }
+
+  .contact__form {
+    width: 100%;
+  }
+
+  .profile__container {
+    flex-direction: column;
+  }
+
+  .profile__section {
+    margin: 0 0 50px 0;
+    width: 100%;
+  }
+
+  .your-posts__title {
+    font-size: 3rem;
+    font-weight: 900;
+    font-family: "Philosopher", Courier, monospace;
+  }
+
+  .your-posts__section {
+    width: 80%;
+  }
+
+  .your-posts__content {
+    flex-direction: column;
+  }
+
+  .your-posts__card {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  .creator__img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .login__container {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .post__title {
+    font-size: 2rem;
+  }
 }
 
 @media only screen and (max-width: 1200px) {
-    .profile__container {
-        flex-direction: column;
-    }
+  .profile__container {
+    flex-direction: column;
+  }
 
-    .profile__section {
-        margin: 0 0 50px 0;
-        width: 100%;
-    }
+  .profile__section {
+    margin: 0 0 50px 0;
+    width: 100%;
+  }
 
-    .your-posts__title {
-        font-size: 3rem;
-        font-weight: 900;
-        font-family: 'Philosopher', Courier, monospace;
-    }
+  .your-posts__title {
+    font-size: 3rem;
+    font-weight: 900;
+    font-family: "Philosopher", Courier, monospace;
+  }
 
-    .your-posts__section {
-        width: 80%;
-    }
+  .your-posts__section {
+    width: 80%;
+  }
 
-    .your-posts__content {
-        flex-direction: column;
-    }
+  .your-posts__content {
+    flex-direction: column;
+  }
 
-    .your-posts__card {
-        margin-top: 15px;
-        margin-bottom: 15px;
-        width: 100%;
-    }
+  .your-posts__card {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 100%;
+  }
 
-    .register__container {
-        margin: 0;
-    }
-
+  .register__container {
+    margin: 0;
+  }
 }
 
 @media only screen and (min-width: 1400px) {
-    .create-post__form {
-        width: 45%;
-    }
+  .create-post__form {
+    width: 45%;
+  }
 
-    .register__container {
-        margin: 0;
-        width: 700px;
-    }
+  .register__container {
+    margin: 0;
+    width: 700px;
+  }
 
-    .edit-post__container {
-        width: 900px;
-    }
-    .post__container {
-        width: 900px;
-    }
+  .edit-post__container {
+    width: 900px;
+  }
+  .post__container {
+    width: 900px;
+  }
 
-    .form__card {
-        width: 700px;
-    }
+  .form__card {
+    width: 700px;
+  }
 }

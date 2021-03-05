@@ -1,22 +1,22 @@
 body {
-    background-image: url('/static/images/blog-images/sign.jpg');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    width: 100%;
+  background-image: url("/static/images/blog-images/sign.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  width: 100%;
 }
 
 p > a {
-    text-decoration: none;
-    color: #000;
+  text-decoration: none;
+  color: #000;
 }
 
 p > a:hover {
-    text-decoration: none;
-    color: #000;
+  text-decoration: none;
+  color: #000;
 }
 
 .footer {
-    padding: 30px 0 30px 0;
-    width: 100%;
+  padding: 30px 0 30px 0;
+  width: 100%;
 }

@@ -4,14 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Send It Blog</title>
-    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}" />
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='images/favicon.ico') }}"
+    />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/uikit@3.6.13/dist/css/uikit.min.css"
     />
-    <link 
-      rel="stylesheet" 
-      href="{{ url_for('static', filename='css/dropzone.min.css') }}" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/dropzone.min.css') }}"
+    />
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='css/styles.css') }}"
@@ -22,70 +26,144 @@
   <body>
     <!-- Navbar -->
     <header>
-      <nav class="uk-navbar-container uk-margin-medium-bottom navbar uk-overflow-hidden" style="z-index: 980;" uk-sticky="show-on-up: true; animation: uk-animation-slide-top; bottom: #bottom" uk-navbar>
+      <nav
+        class="uk-navbar-container uk-margin-medium-bottom navbar uk-overflow-hidden"
+        style="z-index: 980;"
+        uk-sticky="show-on-up: true; animation: uk-animation-slide-top; bottom: #bottom"
+        uk-navbar
+      >
         <div class="search__container">
-            <!-- if statement checking if page is index page -->
-            {% if not self._TemplateReference__context.name == "index.html" %}
-            <!-- if not, show this search section which is invisible -->
-            <div class="uk-navbar-item uk-invisible">
-                <form action="{{ url_for('search') }}" method="POST" class="uk-search uk-search-navbar">
-                <span uk-search-icon></span>
-                <input class="uk-search-input uk-text-center" type="search" placeholder="Search" autofocus required>
-                <label for="search"></label>
-                </form>
-            </div>
-            {% else %}
-            <!-- else show this search section which is visible -->
-            <div class="uk-navbar-item">
-                <a class="uk-navbar-toggle" href="#" uk-search-icon></a>
-                <div class="uk-navbar-dropdown" uk-drop="mode: click; cls-drop: uk-navbar-dropdown; boundary: !nav">
-                    <div class="uk-grid-small uk-flex-middle" uk-grid>
-                        <div class="uk-width-expand">
-                            <form action="{{ url_for('search') }}" method="POST" class="uk-search uk-search-navbar uk-width-1-1">
-                            <input class="uk-search-input search__input" name="search" id="search" type="search" placeholder="Search" autofocus required>
-                            <label for="search"></label>
-                            </form>
-                        </div>
-                        <div class="uk-width-auto">
-                            <a class="uk-navbar-dropdown-close" href="#" uk-close></a>
-                        </div>
-                    </div>
+          <!-- if statement checking if page is index page -->
+          {% if not self._TemplateReference__context.name == "index.html" %}
+          <!-- if not, show this search section which is invisible -->
+          <div class="uk-navbar-item uk-invisible">
+            <form
+              action="{{ url_for('search') }}"
+              method="POST"
+              class="uk-search uk-search-navbar"
+            >
+              <span uk-search-icon></span>
+              <input
+                class="uk-search-input uk-text-center"
+                type="search"
+                placeholder="Search"
+                autofocus
+                required
+              />
+              <label for="search"></label>
+            </form>
+          </div>
+          {% else %}
+          <!-- else show this search section which is visible -->
+          <div class="uk-navbar-item">
+            <a class="uk-navbar-toggle" href="#" uk-search-icon></a>
+            <div
+              class="uk-navbar-dropdown"
+              uk-drop="mode: click; cls-drop: uk-navbar-dropdown; boundary: !nav"
+            >
+              <div class="uk-grid-small uk-flex-middle" uk-grid>
+                <div class="uk-width-expand">
+                  <form
+                    action="{{ url_for('search') }}"
+                    method="POST"
+                    class="uk-search uk-search-navbar uk-width-1-1"
+                  >
+                    <input
+                      class="uk-search-input search__input"
+                      name="search"
+                      id="search"
+                      type="search"
+                      placeholder="Search"
+                      autofocus
+                      required
+                    />
+                    <label for="search"></label>
+                  </form>
                 </div>
+                <div class="uk-width-auto">
+                  <a class="uk-navbar-dropdown-close" href="#" uk-close></a>
+                </div>
+              </div>
             </div>
-            {% endif %}
+          </div>
+          {% endif %}
         </div>
         <!-- logo -->
-        <a class="uk-navbar-item uk-navbar-center uk-logo logo link" href="{{ url_for('get_posts') }}">SEND IT...</a>  
-        <a href="#offcanvas-slide" class="uk-position-center-right uk-margin-medium-right link" uk-toggle uk-icon="icon: menu; ratio: 2;"></a>
+        <a
+          class="uk-navbar-item uk-navbar-center uk-logo logo link"
+          href="{{ url_for('get_posts') }}"
+          >SEND IT...</a
+        >
+        <a
+          href="#offcanvas-slide"
+          class="uk-position-center-right uk-margin-medium-right link"
+          uk-toggle
+          uk-icon="icon: menu; ratio: 2;"
+        ></a>
         <!-- sliding off-canvas menu -->
         <div id="offcanvas-slide" uk-offcanvas="flip: true; mode: reveal;">
           <div class="uk-offcanvas-bar offcanvas__nav">
             <ul class="uk-nav" id="nav__items">
-              <li><a href="{{ url_for('get_posts') }}" class="nav__item">HOME</a></li>
-              <hr class="uk-divider-small uk-margin-small">
-              <li><a href="{{ url_for('about') }}" class="nav__item">ABOUT</a></li>
-              <hr class="uk-divider-small uk-margin-small">
-              <li><a href="{{ url_for('contact') }}" class="nav__item">CONTACT</a></li>
-              <hr class="uk-divider-small uk-margin-small">
+              <li>
+                <a href="{{ url_for('get_posts') }}" class="nav__item">HOME</a>
+              </li>
+              <hr class="uk-divider-small uk-margin-small" />
+              <li>
+                <a href="{{ url_for('about') }}" class="nav__item">ABOUT</a>
+              </li>
+              <hr class="uk-divider-small uk-margin-small" />
+              <li>
+                <a href="{{ url_for('contact') }}" class="nav__item">CONTACT</a>
+              </li>
+              <hr class="uk-divider-small uk-margin-small" />
               <!-- if statement checking if user is logged in  -->
               {% if session.user %}
-                <!-- if so, show profile and logout links -->
-                <li><a href="{{ url_for('profile', username=session['user']) }}" class="nav__item">PROFILE</a></li>
-                <hr class="uk-divider-small uk-margin-small">
-                <li><a href="{{ url_for('logout') }}" class="nav__item">LOG OUT</a></li>
-                <hr class="uk-divider-small uk-margin-small">
+              <!-- if so, show profile and logout links -->
+              <li>
+                <a
+                  href="{{ url_for('profile', username=session['user']) }}"
+                  class="nav__item"
+                  >PROFILE</a
+                >
+              </li>
+              <hr class="uk-divider-small uk-margin-small" />
+              <li>
+                <a href="{{ url_for('logout') }}" class="nav__item">LOG OUT</a>
+              </li>
+              <hr class="uk-divider-small uk-margin-small" />
               {% else %}
               <!-- if not, show login/sign up links -->
-                <li><a href="{{ url_for('login') }}" class="nav__item">LOG IN</a></li>
-                <hr class="uk-divider-small uk-margin-small">
-                <li><a href="{{ url_for('register') }}" class="nav__item">SIGN UP</a></li>
-                <hr class="uk-divider-small uk-margin-small">
+              <li>
+                <a href="{{ url_for('login') }}" class="nav__item">LOG IN</a>
+              </li>
+              <hr class="uk-divider-small uk-margin-small" />
+              <li>
+                <a href="{{ url_for('register') }}" class="nav__item"
+                  >SIGN UP</a
+                >
+              </li>
+              <hr class="uk-divider-small uk-margin-small" />
               {% endif %}
-                <!-- social media icons -->
+              <!-- social media icons -->
               <div class="social__links uk-margin-large-top">
-                <a href="https://github.com/louparker" class="social__icon" uk-icon="icon: github; ratio: 1.5;"></a>
-                <a href="https://www.linkedin.com/in/ivan-lupaka-56255550/" class="social__icon" uk-icon="icon: linkedin; ratio: 1.5;"></a>
-                <a href="https://www.instagram.com/ivan_thedj/" class="social__icon" uk-icon="icon: instagram; ratio: 1.5;"></a>
+                <a
+                  href="https://github.com/louparker"
+                  class="social__icon"
+                  uk-icon="icon: github; ratio: 1.5;"
+                  target="_blank"
+                ></a>
+                <a
+                  href="https://www.linkedin.com/in/ivan-lupaka-56255550/"
+                  class="social__icon"
+                  uk-icon="icon: linkedin; ratio: 1.5;"
+                  target="_blank"
+                ></a>
+                <a
+                  href="https://www.instagram.com/ivan_thedj/"
+                  class="social__icon"
+                  uk-icon="icon: instagram; ratio: 1.5;"
+                  target="_blank"
+                ></a>
               </div>
               <!-- tagline -->
               <p class="tagline">A Tastemakers Take On Music & Culture</p>
@@ -97,41 +175,56 @@
 
     <!-- Flash messages displayed here! -->
     <section>
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                {% for message in messages %}
-                    <div class="flashes">
-                        <h4 class="center-align flashed-message">{{ message }}</h4>
-                    </div>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
+      {% with messages = get_flashed_messages() %} {% if messages %} {% for
+      message in messages %}
+      <div class="flashes">
+        <h4 class="center-align flashed-message">{{ message }}</h4>
+      </div>
+      {% endfor %} {% endif %} {% endwith %}
     </section>
 
     <!-- Main Content -->
     <main class="uk-flex-center" uk-grid>
-      {% block content %}
-      {% endblock %}
+      {% block content %} {% endblock %}
     </main>
 
     <!-- Footer -->
-    <div class="divider uk-border-rounded uk-flex-center" uk-sticky="bottom: true"></div>
+    <div
+      class="divider uk-border-rounded uk-flex-center"
+      uk-sticky="bottom: true"
+    ></div>
     <footer>
-        <div id="bottom" class="uk-section uk-section-secondary uk-light footer">
-            <div class="uk-container">
-                <!-- tagline -->
-                <p class="center-align footer__text">A Tastemakers Taste On Music & Culture</p>
-                <!-- social media icons -->
-                <div class="center-align">
-                    <a href="https://www.linkedin.com/in/ivan-lupaka-56255550/" class="uk-margin-medium-right" uk-icon="icon: linkedin; ratio: 1.5" target="_blank"></a>
-                    <a href="https://github.com/louparker" class="uk-margin-auto" uk-icon="icon: github; ratio: 1.5" target="_blank"></a>
-                    <a href="https://www.instagram.com/ivan_thedj/" class="uk-margin-medium-left" uk-icon="icon: instagram; ratio: 1.5" target="_blank"></a>
-                </div>
+      <div id="bottom" class="uk-section uk-section-secondary uk-light footer">
+        <div class="uk-container">
+          <!-- tagline -->
+          <p class="center-align footer__text">
+            A Tastemakers Taste On Music & Culture
+          </p>
+          <!-- social media icons -->
+          <div class="center-align">
+            <a
+              href="https://www.linkedin.com/in/ivan-lupaka-56255550/"
+              class="uk-margin-medium-right"
+              uk-icon="icon: linkedin; ratio: 1.5"
+              target="_blank"
+            ></a>
+            <a
+              href="https://github.com/louparker"
+              class="uk-margin-auto"
+              uk-icon="icon: github; ratio: 1.5"
+              target="_blank"
+            ></a>
+            <a
+              href="https://www.instagram.com/ivan_thedj/"
+              class="uk-margin-medium-left"
+              uk-icon="icon: instagram; ratio: 1.5"
+              target="_blank"
+            ></a>
+          </div>
 
-                <p class="center-align footer__text"> &#169; 2021 Ivan Lupaka</p>
-
-            </div>
+          <p class="center-align footer__text">&#169; 2021 Ivan Lupaka</p>
         </div>
+      </div>
     </footer>
 
     <!-- Scripts -->

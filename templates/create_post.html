@@ -1,52 +1,76 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "base.html" %} {% block content %}
 <!-- create post container -->
 <div class="uk-flex-column center-align uk-width-1-1" uk-grid>
-    <!-- create post header -->
-    <div>
-        <h3 class="create-post__header">Create Post</h3>
-    </div>
-    <!-- create post form -->
-    <div>
-        <form class="create-post__form" method="POST" action="{{ url_for('create_post' )}}" enctype="multipart/form-data">
-            <fieldset class="uk-fieldset">
-                <!-- form title -->
-                <legend class="uk-legend">New Post</legend>
-                <!-- post title input -->
-                <div class="uk-margin">
-                    <label for="post_title">Post Title</label>
-                    <input class="uk-input" name="post_title" id="post_title" minlength="5" maxlength="50" type="text" placeholder="Post Title" required/>
-                </div>
-                <!-- post preview input -->
-                <div class="uk-margin">
-                    <label for="post_preview">Post Preview</label>
-                    <input class="uk-input" name="post_preview" id="post_preview" minlength="15" maxlength="100" type="text" placeholder="Post Preview" required/>
-                </div>
-                <!-- content text input  -->
-                <div class="uk-margin">
-                    <label for="post_content">Post Content</label>
-                    <textarea
-                    class="uk-textarea"
-                    rows="5"
-                    name="post_content" id="post_content"
-                    placeholder="Post Content"
-                    required></textarea>
-                </div>
-                
-                <div class="uk-align-center">
-                    <!-- image upload section -->
-                    <input type="file" accept="image/*" name="photo_url" 
-                    id="photo_url">
-                    <!-- submit button -->
-                    <input class="uk-button uk-button-secondary uk-border-rounded create-post__btn" type="submit" 
-                    value="CREATE !" name="submit">
-                </div>
-                        
-            </fieldset>
-        </form>
-    </div>
+  <!-- create post header -->
+  <div>
+    <h3 class="create-post__header">Create Post</h3>
+  </div>
+  <!-- create post form -->
+  <div>
+    <form
+      class="create-post__form"
+      method="POST"
+      action="{{ url_for('create_post' )}}"
+      enctype="multipart/form-data"
+    >
+      <fieldset class="uk-fieldset">
+        <!-- form title -->
+        <legend class="uk-legend">New Post</legend>
+        <!-- post title input -->
+        <div class="uk-margin">
+          <label for="post_title">Post Title</label>
+          <input
+            class="uk-input"
+            name="post_title"
+            id="post_title"
+            minlength="5"
+            maxlength="50"
+            type="text"
+            placeholder="Post Title"
+            required
+          />
+        </div>
+        <!-- post preview input -->
+        <div class="uk-margin">
+          <label for="post_preview">Post Preview</label>
+          <input
+            class="uk-input"
+            name="post_preview"
+            id="post_preview"
+            minlength="15"
+            maxlength="100"
+            type="text"
+            placeholder="Post Preview"
+            required
+          />
+        </div>
+        <!-- content text input  -->
+        <div class="uk-margin">
+          <label for="post_content">Post Content</label>
+          <textarea
+            class="uk-textarea"
+            rows="5"
+            name="post_content"
+            id="post_content"
+            placeholder="Post Content"
+            required
+          ></textarea>
+        </div>
+
+        <div class="uk-align-center">
+          <!-- image upload section -->
+          <input type="file" accept="image/*" name="photo_url" id="photo_url" />
+          <!-- submit button -->
+          <input
+            class="uk-button uk-button-secondary uk-border-rounded create-post__btn"
+            type="submit"
+            value="CREATE !"
+            name="submit"
+          />
+        </div>
+      </fieldset>
+    </form>
+  </div>
 </div>
-
-
 
 {% endblock %}
