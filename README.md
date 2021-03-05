@@ -6,7 +6,7 @@
 
 The “Send It" blog is a site where a collective posts a curated selection of news on music and culture.
 
-Below is a live link to the site which is hosted on GitHub Pages.
+Below is a live link to the site which is hosted on Heroku.
 [HERE](https://send-it-blog.herokuapp.com/)
 
 ## Table Of Contents
@@ -190,7 +190,7 @@ There are two fonts being used for this site. Both are quite modern but they dif
 
 I wanted the colors to be quite simple and understated but still provide enough contrast, vibrancy and really give a contemporary look. I chose black and white as accent, then chose a kind of off white and pastel/off black to be used as the main colors on the site. The secondary accent color was the lime green which would be used to really catch attention off the user.
 
-![screenshot of color palette](https://github.com/louparker/random-music-quiz/blob/main/assets/images/readme%20images/palette.png)
+![screenshot of color palette](https://res.cloudinary.com/ivanprojects/image/upload/v1614911314/send-it-images/dto625em2gftggplvagl.png)
 
 ### Imagery
 
