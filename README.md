@@ -362,7 +362,7 @@ Werkzeug==1.0.1
 
 ## Testing
 
-Testing documentation can be found [HERE](testing.md)
+Testing documentation can be found [HERE](ms3_testing.md)
 
 -----
 
